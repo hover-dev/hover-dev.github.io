@@ -1,0 +1,326 @@
+@import url(http://fonts.googleapis.com/css?family=Milonga);
+
+body {
+	background: #FFF;
+	/*font-family: 'Verdana';*/
+}
+
+p {
+	line-height: 23px;
+}
+
+.projects a:hover, address a:hover, .project a:hover {
+	text-decoration: none;
+}
+
+.narrow {
+	margin: 0 auto;
+	max-width: 750px;
+}
+
+header {
+	background: #2B2B2B;
+	color: white;
+}
+
+header img {
+	width: 30px;
+}
+
+header h1 {
+	float: left;
+}
+
+header h1 a {
+	color: white;
+}
+
+header h1 a:hover {
+	text-decoration: none;
+	color: white;
+}
+
+header nav {
+	float: right;
+	padding: 1em 0;
+	font-size: 1.3em;
+}
+
+header nav a, header nav a:hover {
+	color: #7FC07F;
+}
+
+address {
+	padding: 3em 0 0 0;
+}
+
+footer {
+	position: fixed;
+	right: 0;
+	bottom: 0;
+	z-index: -1;
+	margin-bottom: 0;
+	width: 450px;
+	height: 338px;
+	background-image:url('../img/staring.png');
+}
+
+.intro {
+	padding: 1.7em 0 0 0;
+}
+
+.rambling {
+	padding: 0 0 1em 0;
+}
+
+.projects {
+	width: 100%;
+	float: left;
+}
+
+.projects .city {
+	background-image:url('../img/platformer.png');
+}
+.projects .search {
+	background-image:url('../img/search.png');
+}
+.projects .icarus {
+	background-image:url('../img/icarus.png');
+}
+
+.projects a {
+	position: relative;
+	height: 120px;
+	width: 750px;
+	display: block;
+	float: left;
+}
+
+.projects a.more {
+	margin: 1em 0 0 0;
+	height: 100%;
+}
+
+.projects a h2 {
+	position: absolute; 
+	top: 50px; 
+	left: 0; 
+	width: 250px; 
+}
+
+.projects a h2 span {
+	color: white; 
+	font: bold 0.8em Helvetica, Sans-Serif; 
+	letter-spacing: -1px;  
+	background: rgb(0, 85, 128); /* fallback color */
+	background: rgba(0, 85, 128, 0.7);
+	padding: 10px; 
+}
+
+address {
+	float: left;
+	width: 100%;
+	height: 100%;
+	
+	/*
+	background: #006363;
+	
+	position:fixed;
+   left:0px;
+   bottom:0px;
+   height:150px;
+   width:100%;*/
+}
+
+address div {
+	font-size: 1.5em;
+	font-style: none;
+	float: left;
+	width: 100%;
+	height: 2em;
+}
+
+/* Project module */
+
+content.project .summary {
+	text-align: center;
+	margin: 1em 0;
+}
+
+content.project .xp {
+	padding: 5px 10px 1px 10px;
+	background: #CDCDCD;
+}
+
+content.project .full {
+	float: left;
+	width: 100%;
+}
+content.project .one-third {
+	float: left;
+	width: 230px;
+	padding-left: 10px;
+	padding-right: 10px;
+	margin-bottom: 20px;
+}
+content.project .title {
+	border: 1px solid transparent; 
+	border-radius: 3px;
+	color: #FFFFFF;
+	height: 40px;
+	line-height: 3em;
+	margin-bottom: 30px;
+	position: relative; 
+	padding: 0px 10px;
+}
+content.project .title:after {
+	top: 100%; 
+	border: solid transparent; 
+	content: " "; 
+	height: 0; 
+	width: 0; 
+	position: absolute; 
+	pointer-events: none; 
+	border-width: 13px; 
+	left: 30px; 
+	margin-left: -13px;
+}
+content.project .problem .title { background: #2F2F2F; }
+content.project .process .title { background: #4E4E4E; }
+content.project .results .title { background: #7E7E7E; }
+content.project .problem .title:after { border-top-color: #2F2F2F; }
+content.project .process .title:after { border-top-color: #4E4E4E; }
+content.project .results .title:after { border-top-color: #7E7E7E; }
+
+content.project .youtube-player {
+	display: block;
+	float: left;
+	margin: 0 0 2em 0;
+	border: 5px solid #CDCDCD;
+	width: 740px;
+	height: 435px;
+	padding: 0;
+}
+
+content.project .youtube-link {
+	font-size: 3em;
+	padding: 0.8em 0;
+	margin: 0 auto;
+	width: 180px;
+	display: none;
+}
+
+content.project .no-link {
+	padding: 0.4em 0;
+	width: 100%;
+	display: none;
+}
+
+content.project h2 {
+	padding: 1.5em 0 0.5em 0;
+	font-size: 1.3em;
+	line-height: 0;
+	float: left;
+	width: 100%;
+}
+
+content.project .muted {
+	padding-top: 2em;
+}
+
+.story h2 {
+	font-size: 1.8em;
+	color: #5FA05F;
+	font-family: 'Milonga', cursive;
+}
+
+/* Media queries */
+
+@media (max-width: 1650px) {
+	footer {	
+		width: 300px;
+		height: 225px;
+		background-image:url('../img/staring_small.png');
+	}
+}
+
+@media (max-width: 1350px) {
+	footer {	
+		width: 0;
+		height: 0;
+		background-image: none;
+	}
+}
+
+@media (max-width: 979px) {
+	content.project .one-third {
+		width: 220px;
+		padding: 0 10px;
+	}
+	
+	content.project .youtube-player {
+		width: 714px;
+	}
+}
+
+@media (max-width: 767px) {
+	body {
+		padding: 0;
+	}
+	
+	.container {
+		padding: 0 20px;
+	}
+		
+	.projects a {
+		width: 100%;
+		overflow: hidden;
+	}
+	
+	content.project .one-third {
+		width: 100%;
+		padding: 0;
+	}
+	
+	content.project .title {
+		height: 30px;
+		line-height: 2em;
+	}
+	content.project .header {
+		background-attachment: fixed;
+	}
+	
+	content.project .youtube-player {
+		display: none;
+	}
+	
+	content.project .youtube-link {
+		display: block;
+	}
+	
+	content.project .no-link {
+		display: block;
+	}
+}
+
+@media (max-width: 350px) {
+	header img {
+		width: 50px;
+		float: left;
+		padding: 0.1em 0.5em 0 0;
+	}
+	
+	header .container {
+		padding: 0.5em 2em 0 2em;
+	}
+	
+	header h1 {
+		font-size: 2.8em;
+		float: left;
+		margin: 0 auto;
+	}
+	
+	header nav {
+		float: left;
+	}
+}

@@ -1,0 +1,364 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<link href="main.css" rel="stylesheet" type="text/css" />
+		<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+		<script type="text/javascript" src="page_links.js"></script>
+		<script type="text/javascript" src="chargen.js"></script>
+		<meta charset="ISO-8859-1" />
+		<title>Chapter 3 of Houses of the Blooded</title>
+	</head>
+
+	<body>
+		<!-- <button id="generate">Generate a background</button> -->
+		<h2>Background</h2>
+		<div id="background">
+			<p>
+				Influence Points Remaining: <input id="influence_points" type="text" readonly="readonly" /><br/>
+				<a href="info/houses.html" target="_blank" id="more_house_info">House Information</a>
+			</p>
+			<h3>Parents</h3>
+			<p>
+				Your Mother and Father were <select id="parents_title"></select> in the shadows of the houses <select id="mothers_house"></select> and <select id="fathers_house"></select> respectively.
+			</p>
+			<h3>Siblings</h3>
+			<p>
+				You are the <select id="nth_born"></select> born with <select id="remaining_siblings"></select> remaining siblings, <select id="brothers"></select> brother(s) and <input id="sisters" type="text" readonly="readonly" /> sister(s).
+			</p>
+			<h3>You</h3>	
+			<p>
+				Your name is <input id="public_name" type="text" placeholder="public name"/>
+				<input id="secret_name" type="text" placeholder="secret name" />
+				<input id="house_name" type="text" readonly="readonly" /> of house 
+				<select id="your_house" class="no_cost"></select>*, only 
+				<input id="age" type="text" placeholder="10-19"/> years old.
+				<span style="font-size: 0.75em;">
+					<a href="http://ohthehugemanatee.net/word-o-matic/greek-heroes/" target="_blank">
+						(need help choosing a name?)
+					</a>
+				</span>
+			</p>
+			<p>
+				* Select a house from either your Mother or your Father.
+			</p>
+			<h3>Marriage</h3>
+			<p>
+				You are
+				<select id="married" class="no_cost">
+					<option value="1">Married**</option>
+					<option value="0">Not Married</option>
+				</select>.
+			</p>
+			<p id="about_marriage">
+				You are the
+				<select id="dominant" class="no_cost">
+					<option value="1">dominant**</option>
+					<option value="0">non-dominant</option>
+				</select> party in the arrangement with
+				<select id="dominant" class="no_cost">
+					<option value="0">no</option>
+					<option value="1">1</option>
+					<option value="2">2</option>
+				</select> children.
+			</p>
+			<p>
+				** Recommended
+			</p>
+		</div>
+		
+		<br/>
+		<h2>Virtues</h2>
+		<div id="virtues">
+			<p>
+				See page 91 for more information. Pick each virtue only once.<br/>
+			</p>
+			<p>
+				Your weakness is your <select id="weakness" class="no_cost"></select>.<br/>
+			</p>
+			<p>
+				Your <select id="rank2A" class="no_cost"></select> and <select id="rank2B" class="no_cost"></select> are average. (Rank 2)<br/>
+			</p>
+			<p>
+				Your <select id="rank3A" class="no_cost"></select> and <select id="rank3B" class="no_cost"></select> are good. (Rank 3)<br/>
+			</p>
+			<p>	
+				Your <select id="rank4" class="no_cost"></select> is exceptional. (Rank 4)<br/>
+			</p>
+			<p>
+				Your house virtue is <select id="house_virtue" class="no_cost"></select>. If this is your weakness then you cannot claim the +1 Rank bonus.
+			</p>
+		</div>
+		
+		<br/>
+		<h2>Phases</h2>
+		<div id="phases">
+		<p>
+			While creating a character, you won’t just look at who he is, but you’ll 
+also take a look at who he was. 
+		<p>
+		</p>
+			Your character’s past is told in a series of Phases. A Phase represents 
+a certain amount of time in your character’s past. Each character has 4 Phases: Spring, Summer, Autumn, and Solace.
+		<p>
+		</p>
+			Each Phase is different, representing a different time in your 
+character’s life. The more Phases you choose for your character, 
+the older your character becomes. Age brings advantages but also 
+carries the weight of certain disadvantages.
+		<p>
+		</p>
+			For each Phase, your character gets Aspects and Contacts.
+		</p>
+		<br/>
+			<div class="col1">
+			<h3>Aspects</h3>
+			<p>
+				You get two Aspects.
+			</p>
+			<p>
+				Aspects  are words, phrases or even quotes that help define your 
+	character. They are the keywords you use to describe not only who
+	your character is, but what your character means. Aspects can make
+	the difference between a good character and a great character.
+			</p>
+			<p>
+				Start by thinking about who your character is. A noble. What
+	makes your character unique from the others you’ll meet? What 
+	makes you stand apart?
+			</p>
+			<p>
+				If you had only two things to say about your character—and each
+	had to be summed up in five words or less—what would those two 
+	things be? That’s a good way to start thinking about Aspects. And 
+	remember, an Aspect can be a single word, a couple of words, a phrase
+	an item, or even a quote. <a href="info/aspectexamples.html" target="_blank">Here</a> are a few examples to get you started.
+			2 aspects, 1 contact
+			</p>
+			<br/>
+			<p>
+				For mechanics, an Aspect as <b>an Invoke, a Tag, and a Compel</b>.
+			</p>
+			<p>
+				<b>The Invoke</b> is explicit circumstances in which your aspect gives you an advantage of 3 bonus dice. An appropriately narrow circumstance may be "when I use a sword". 
+			</p>
+			<p>
+				<b>The Tag</b> is a weakness in your Aspect which may give a knowledgeable enemy an extra 2 bonus dice against you. An example weakness may be your overhead strike has a severe opening in you defenses.
+			</p>
+			<p>
+				<b>The Compel</b> is a certain manner, for good or ill, that your Aspect makes you act in. Anyone may Compel your Apsect to limit your behaviour. An example behaviour may be your particular code of honor compelling you to risk your own life to protect others.
+			</p>
+			<p>
+				Most importantly, your Tags and Compels are a secret. Nobody can Tag or Compel your Aspect unless they know them.
+			</p>
+			<p>
+				Invoking your Aspect or Tagging/Compelling another's Aspect costs one Style point. We'll get to these later.
+			</p>
+			</div>
+			<div class="col2">
+			<h3>Contacts</h3>
+			<p>
+				You get one Contact.
+			</p>
+			<p>
+				All through your character’s life, he’s made important 
+	connections with other nobles. Sometimes those connections 
+	fade, sometimes they last for years. Each Phase, your 
+	character has an opportunity to make a contact, a 
+	friend or ally that lasts through the storms life throws at 
+	relationships.
+			<p>
+				Pick another player's character for this Phase's contact.
+	You both share some sort of connection, a story
+	about how you met and why you became such close friends.
+			</p>
+			<p>
+				If you like, draw a name out of a hat or make a deliberate 
+	choice. Either way, you should choose a different character
+	for each Phase.
+			</p>
+			<p>
+				Not only does this build relationships with other 
+	characters, but it also helps build your own history, filling 
+	in details, getting input from other players, facets of your 
+	character you may have never thought of yourself.
+			</p>
+				Mechanical benefits for having Contacts are many. For
+	example, you may spend style points to refresh a contact’s 
+	Aspects and trading resources and goods are easier with a 
+	contact. As we go through the rules, you’ll see other places 
+	where contacts provide advantages you’ll want in the game.
+	Keep an eye out for them.
+			</p>
+			</div>
+		</div>
+		
+		<br/>
+		<h2>Devotions</h2>
+		<div id="devotions">
+		<p>
+			You have three points of Devotion to divide amongst your Ancestors.
+		</p>
+		<p>
+			Your Ancestors play a large role in this world. When they die, their legacies live on and
+			they becomes symbols, patron saints of their virtues. Those strongly devoted to their
+			Ancestors even attest to communicating with them in visions or dreams. There are many
+			Ancestors, often overlapping in their worshipped attribute.
+		</p>
+		<p>
+			Many Ancestors are surrounded by a sect of devoted followers, a cult of mystery. Joining
+			these cults allows you to learn the secrets of that Ancestor's life. The more you know,
+			the more you know how to communicate with them. You learn symbols associated with them,
+			surround yourself with those symbols, and attune yourself to their slumbering conciousness.
+		</p>
+		<p>
+			Now, if you show your Ancestor the proper respect, reverence and adoration (like bringing 
+wine and flowers to their shrines), they return your kindness with Blessings. These 
+are supernatural gifts that benefit your character in specific ways. You can read all about 
+the Blessings in <b>chapter ___________!!!!!!!!!!!!!!!!!</b>.
+		<p>
+		</p>
+			You can have an Ancestor of swords, an Ancestor of bridges, of gardening, or of just about anything.
+			You may not have an Ancestor of “winning rolls”. That would be lame. Bad form.
+		</p>
+		<p>
+			The following are 6 major Ancestors. You may choose to divide your Devotion among 
+them. You have three points of Devotion to give these Ancestors, each point increasing 
+your Devotion to them by one rank. For example, if you put two points toward 
+______!!!!!!!!!!, your Devotion to the Falcon’s Friend is rank 2. If you put one point 
+toward __________!!!!!!!!, your Devotion to Old One-Eye is rank 1.
+		</p>
+		<table border="1" style="margin: 0 20px;">
+			<tr>
+				<td>
+					<b>Celsiat Arcel</b> of the road, 
+falcon’s friend, the beggar brigand. Call 
+upon him when you seek insight into the 
+ways of the Road.
+				</td>
+				<td>
+					<b>Ajax Urvus</b> swordsman, old one-eye, 
+the crimson cloak. Call upon him when you 
+seek insight into the ways of the Sword.
+				</td>
+				<td>
+					<b>Orichum Alcedus</b> the Iron Heart, Winter’s 
+Promise, the Ruthless. Call upon him when 
+you seek insight into the ways of Politics.
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<b>Metria Decentus</b> the hearthmother, ward-
+teacher, grand dame. Call upon her when 
+you seek insight into the ways of Etiquette.
+				</td>
+				<td>
+					<b>Selene Vulorma</b> the celestial muse, sacred 
+harlot, keeper of roses. Call upon her when 
+you seek insight into the ways of Romance.
+				</td>
+				<td>
+					<b>Vetch Selaricus</b> keeper of secrets, the blind 
+one, whisperer. Call upon him when you 
+seek insight into the ways of Intrigue.
+				</td>
+			</tr>
+		</table>
+		</div>
+		
+		<br/>
+		<h2>Domain</h2>
+		<div id="domain">
+		<p>
+			It’s time to determine what Regions and Vassals your noble owns.
+		</p>
+		<p>
+			A Domain is a vague stretch of land with various geographical features. Strange
+			oddities, such as deserts next to forests or tundras next to mountains, are not
+			uncommon in strange lands due to the powerful sorcerer-kings of old. Your Domain
+			is all the land you hold.
+		</p>
+		<p>
+			You begin the game with five points for Regions and five points for Vassals.
+		</p>
+		
+		<div class="col1">
+			<h3>Regions</h3>
+			<p>
+				The standard unit of land is a <b>Province</b> which is made of <b>ten Regions</b>.
+				A Region generally represents some geographical feature such as a mountain range, a
+				farmstead, or a forest.
+			</p>
+			<p>
+				As a beginning character, your Domain is not completely explored. You own a 
+	Province and within that Province are ten Regions, but not all the Regions are yet under 
+	your control. You must take some effort to expand your control so your Domain comes 
+	completely under your thumb.
+			</p>
+			<p>
+				For free you get two discovered Regions: your Castle and your Village. After that
+				you need to spend one of your five starting Region points to discover a Region.
+				You may also invest one point in your Region to increase it's Rank.
+			</p>
+			<p>
+				When a Region is explored, it becomes Rank 1 and you must pick one resource for
+				it to produce. At Rank X, it will provide you with X of those resources. For example,
+				if you spend a point to discover a Forest and then invest another point into it then
+				you have a Rank 2 Forest which produces either 2 Food or 2 Lumber for you.
+			</p>
+			<p>
+				<a href="info/regions.html" target="_blank" id="more_region_info">Region Type Information</a>
+			</p>
+		</div>
+		
+		<div class="col2">
+			<h3>Vassals</h3>
+			<p>
+				Vassals are skilled professionals who help you with your Season Actions. Each has
+				an upkeep cost of at least 1 Food per Year but the more you pay them the less likely
+				they are to be bribed by enemies.
+			</p>
+			<p>
+				If you are Married then you automatically get a Rank 1 Spouse Vassal. Remember to
+				name your Vassals, whether they be individuals or groups!
+			</p>
+			<p>
+				<a href="info/chargenvassals.html" target="_blank" id="more_vassal_info">Vassal Type Information</a>
+			</p>
+		</div>
+		</div>
+		
+		<br/>
+		<h2>Style</h2>
+		<div id="style">
+			<p>
+				Your character starts with <b>three Style points</b>. There 
+all kinds of things you can do with Style points. You 
+can read about how to earn and spend them in the 
+Risk chapter. But, for right now, just know that you 
+have three.
+			<p>
+				At the end of each game session,
+you may any remaining Style points to a maximum of five unless a rule states otherwise.
+All unbanked Style points will be lost at the end of the session.
+			</p>
+		</div>
+		
+		<br/>
+		<h2>Bonus Points</h2>
+		<div id="bonus_points">
+			You get <b>five Bonus points</b>. They buy you a little something extra from
+			the following categories and you may not spend more than 3 in a single category.
+			<ul>
+				<li><b>Aspect</b> - You may buy new Aspects to a limit of half your Wisdom, rounded up</li>
+				<li><b>Contact</b> - You may buy an additional Contact. You may choose NPCs with Narrator permission</li>
+				<li><b>Devotion</b> - You may increase your Devotion to an Ancestor to a maximum of Rank 3</li>
+				<li><b>Friend</b> - You may spend your points to turn a Contact into a Friend (see pg.????????)</li>
+				<li><b>Region</b> - You can discover Regions or invest in a Region to a maximum of Rank 3</li>
+				<li><b>Relic</b> - You can buy a relic (see pg.??????????)</li>
+				<li><b>Ritual</b> - You can buy a dangerous and illegal ritual (see pg.????????????)</li>
+				<li><b>Vassals</b> - You can gain an additional Vassal or increase the rank of an existing Vassal. You cannot use these points to turn a Vassal into an NPC</li>
+			</ul>
+		</div>
+	</body>
+</html>

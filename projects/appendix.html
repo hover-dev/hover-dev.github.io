@@ -1,0 +1,232 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" media="all">
+	<link rel="stylesheet" type="text/css" href="style.css" media="all">
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.0.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
+	<script type="text/javascript" src="main.js"></script>
+</head>
+<body>
+	<a href="rules.html">Base Rules</a>
+	<h3>Species</h3>
+	<table>
+		<tr>
+			<td><b>Name</b></td>
+			<td><b>Flaw</b></td>
+			<td><b>Action Cards</b></td>
+			<td><b>Starting Fleet</b></td>
+		</tr>
+		<tr>
+			<td>Humans</td>
+			<td>
+				<b>Insatiable Curiosity</b><br>
+				-2 production unless you have uncovered a Discovery Tile this round.
+			</td>
+			<td>
+				<b>Wild Inventions</b> (any time)<br>
+				Gain any 2 tech, even if they weren't made available for this game.
+				<hr>
+				<b>Fanatical Rhetoric</b> (when using propaganda)<br>
+				Place 10 Riot Counters instead of 1.
+				<hr>
+				<b>Natural Explorer</b> (when uncovering a Disocvery Tile)<br>
+				Uncover and resolve every adjacent Discovery Tile as well, as if those ships had moved there.
+			</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>Martians</td>
+			<td>
+				<b>Annoying</b><br>
+				-2 Influence during Council voting
+			</td>
+			<td>
+				<b>Stolen Secrets</b> (during Council, before voting)<br>
+				Two players of your choosing must vote in your favour.
+				<hr>
+				<b>Serendipitous Insight</b> (during a battle where you're the defender)<br>
+				Gain 2 tech that your opponent has, of your choice and ignoring Tier requirements.
+				<hr>
+				<b>Misdirection</b> (when targeted by an Action Card or passing Law)<br>
+				Pick another player to take the effect of the card instead of you.
+			</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>Overlords</td>
+			<td>benevolent</td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>Predators</td>
+			<td>Enjoy hunting other species, not outright destruction</td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>Daleks</td>
+			<td>a society that honors and values hate instead of love</td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>Vogons</td>
+			<td>
+				<b>Slow Planning</b><br>
+				Small Tactics cost 4BP, Big Tactics cost 12BP
+			</td>
+			<td>
+				<b>Ruthless Bureaucracy</b> (when you've finished voting on a law)<br>
+				The law fails to pass and all laws are suspended until the next Council
+				<hr>
+				<b>Greater Good</b> (during Council, before voting)<br>
+				Replace the law being voted with this:<br>
+				elect planet; pass: kill everything on that hex and make the planet neutral. everyone for gains 1 tech; against: destroy half the ships on that hex, rounded down
+				<hr>
+				<b>Force Discussion</b> (any time)<br>
+				look at the top 4 Council Cards on the deck. Discard up to 2 and place the rest back in the order of your choice
+			</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>Chtorran</td>
+			<td>one long-reaching god who terraforms planets to conquer them. hypnotism and absorbtion</td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>Yilane</td>
+			<td>reptile creatures that grow materials instead of building them</td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>Necromorphs</td>
+			<td>
+				<b>Mindless</b><br>
+				You can only participate in a Council vote if another player allows them to take their place.
+			</td>
+			<td>
+				<b>Consuming Virus</b> (any time)<br>
+				All ships on a hex of your choice now belong to you.
+				<hr>
+				<b>Regeneration</b> (after winning a battle)<br>
+				Return all your destroyed ships from that battle to the hex they were destroyed on.
+				<hr>
+				<b>Corrosion</b> (after losing a battle)<br>
+				Remove 2 tech of your choice from your opponent.
+			</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>Slumbering Ancients</td>
+			<td>largely hibernating until a racial tech allows them to rampage for a turn. set everything up and watch it go</td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>Hivemind</td>
+			<td>+1 minor action</td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>Explorers</td>
+			<td>cool movement bonuses that aren't way out of hand</td>
+			<td></td>
+			<td></td>
+		</tr>
+	</table>
+
+
+
+
+
+	<h3>Traits</h3>
+	<table>
+		<tr>
+			<td>Studious</td>
+			<td>tech</td>
+			<td>Only require 1 technology per tier</td>
+		</tr>
+		<tr>
+			<td>Persuasive</td>
+			<td>politics</td>
+			<td>+3 influence per round</td>
+		</tr>
+		<tr>
+			<td>Industrious</td>
+			<td>tech/battle</td>
+			<td>+2 production per round</td>
+		</tr>
+		<tr>
+			<td>Overwhelming</td>
+			<td>battle</td>
+			<td>+1 to planetary invasion rolls</td>
+		</tr>
+		<tr>
+			<td>Lucky</td>
+			<td>discovery</td>
+			<td>after landing on a Discovery Token, he can draw another one to replace it once</td>
+		</tr>
+		<tr>
+			<td>Underhanded</td>
+			<td>propaganda</td>
+			<td>Only needs 4 Influence Counters to incite a Riot</td>
+		</tr>
+		<tr>
+			<td>Cautious</td>
+			<td>battle</td>
+			<td>Reatreating in combat does not cost an action</td>
+		</tr>
+		<tr>
+			<td>Bombastic</td>
+			<td>battle</td>
+			<td>Big Tactic cards only cost 8 Battle Points</td>
+		</tr>
+		<tr>
+			<td>Persistant</td>
+			<td>battle</td>
+			<td>Can reroll Planetary Invasion rolls once per action</td>
+		</tr>
+		<tr>
+			<td>Stubborn</td>
+			<td>politics</td>
+			<td>+4 influence when voting against</td>
+		</tr>
+		<tr>
+			<td>Advanced</td>
+			<td>tech</td>
+			<td>Begin with one Tier 1 technology of your choice</td>
+		</tr>
+		<tr>
+			<td>Vigilant</td>
+			<td>propaganda</td>
+			<td>+1 Influence Counter needed to riot planets you own</td>
+		</tr>
+		<tr>
+			<td>Prophetic</td>
+			<td>discovery</td>
+			<td>take a peek at one Discovery Token per round</td>
+		</tr>
+		<tr>
+			<td>Trader</td>
+			<td>tech/battle</td>
+			<td>you can expend a planet to spend influence as production</td>
+		</tr>
+	</table>
+	<b>More politics!</b>
+</body>
+</html>
+
+
+
+
+
+			<td>Selfish</td>
+			<td>politics</td>
+			<td>After a player is elected for a law but before voting, you may elect someone else instead</td>

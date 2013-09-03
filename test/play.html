@@ -1,0 +1,179 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>Unity Web Player | RobotTest</title>
+		<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js'></script>
+		<script type="text/javascript">
+		<!--
+		var unityObjectUrl = "http://webplayer.unity3d.com/download_webplayer-3.x/3.0/uo/UnityObject2.js";
+		if (document.location.protocol == 'https:')
+			unityObjectUrl = unityObjectUrl.replace("http://", "https://ssl-");
+		document.write('<script type="text\/javascript" src="' + unityObjectUrl + '"><\/script>');
+		-->
+		</script>
+		<script type="text/javascript">
+		<!--
+			var config = {
+				width: 960, 
+				height: 600,
+				params: { enableDebugging:"0" }
+				
+			};
+			var u = new UnityObject2(config);
+
+			jQuery(function() {
+
+				var $missingScreen = jQuery("#unityPlayer").find(".missing");
+				var $brokenScreen = jQuery("#unityPlayer").find(".broken");
+				$missingScreen.hide();
+				$brokenScreen.hide();
+				
+				u.observeProgress(function (progress) {
+					switch(progress.pluginStatus) {
+						case "broken":
+							$brokenScreen.find("a").click(function (e) {
+								e.stopPropagation();
+								e.preventDefault();
+								u.installPlugin();
+								return false;
+							});
+							$brokenScreen.show();
+						break;
+						case "missing":
+							$missingScreen.find("a").click(function (e) {
+								e.stopPropagation();
+								e.preventDefault();
+								u.installPlugin();
+								return false;
+							});
+							$missingScreen.show();
+						break;
+						case "installed":
+							$missingScreen.remove();
+						break;
+						case "first":
+						break;
+					}
+				});
+				u.initPlugin(jQuery("#unityPlayer")[0], "WebPlayer.unity3d");
+			});
+		-->
+		</script>
+		<style type="text/css">
+		<!--
+		body {
+			font-family: Helvetica, Verdana, Arial, sans-serif;
+			background-color: white;
+			color: black;
+			text-align: center;
+		}
+		a:link, a:visited {
+			color: #000;
+		}
+		a:active, a:hover {
+			color: #666;
+		}
+		p.header {
+			font-size: small;
+		}
+		p.header span {
+			font-weight: bold;
+		}
+		p.footer {
+			font-size: x-small;
+		}
+		div.content {
+			margin: auto;
+			width: 960px;
+		}
+		div.broken,
+		div.missing {
+			margin: auto;
+			position: relative;
+			top: 50%;
+			width: 193px;
+		}
+		div.broken a,
+		div.missing a {
+			height: 63px;
+			position: relative;
+			top: -31px;
+		}
+		div.broken img,
+		div.missing img {
+			border-width: 0px;
+		}
+		div.broken {
+			display: none;
+		}
+		div#unityPlayer {
+			cursor: default;
+			height: 600px;
+			width: 960px;
+		}
+		-->
+		</style>
+	</head>
+	<body>
+		<p class="header"><span>Unity Web Player | </span>RobotTest</p>
+		<div class="content">
+			<div id="unityPlayer">
+				<div class="missing">
+					<a href="http://unity3d.com/webplayer/" title="Unity Web Player. Install now!">
+						<img alt="Unity Web Player. Install now!" src="http://webplayer.unity3d.com/installation/getunity.png" width="193" height="63" />
+					</a>
+				</div>
+				<div class="broken">
+					<a href="http://unity3d.com/webplayer/" title="Unity Web Player. Install now! Restart your browser after install.">
+						<img alt="Unity Web Player. Install now! Restart your browser after install." src="http://webplayer.unity3d.com/installation/getunityrestart.png" width="193" height="63" />
+					</a>
+				</div>
+			</div>
+		</div>
+		<div style="text-align:left;">
+			<h2 style="color:red;">Enable/disable mouselook with space!</h2>
+			<h3>Requirements</h3>
+			<p>
+				Implement a solution that allows us to instantiate a robot, move it around and ask it for its
+				position and direction. Input and output can be very basic, and no visualization is needed. You
+				can even hard code some input and output for various cases.
+			</p>
+
+			<h3>Implementation:</h3>
+			<ul>
+				<li>Instantiate Robots by placing a robot prefab in Designer mode.</li>
+				<li>Move robots around by pressing Execute after filling the right-hand text input with either format:
+					<ul>
+						<li>"[ground|airborne] &lt;instructions&gt;" to move the first ground or airborne Robot and select* it</li>
+						<li>"&lt;instructions&gt;" to move the selected* Robot</li>
+					</ul>
+				</li>
+				<li>Position and compass direction are given for the selected* Robot</li>
+			</ul>
+
+			<p>* Select a robot by clicking the left-hand buttons or moving it via 2 parameter instructions. The selected Robot will flash yellow and take instructions by default.</p>
+
+			<hr>
+
+			<h3>Camera Movement:</h3>
+			<ul>
+				<li>Mouselook is enabled and disabled with Space, allowing you to click and type in the GUI without looking around</li>
+				<li>WSAD and the Arrow Keys both move the character on the X,Z plane</li>
+				<li>In the interests of time and MVP there is no vertical movement</li>
+				<li>Collision detection is disabled for the camera and the Robots</li>
+			</ul>
+
+			<h3>Testing Frameworks Research:</h3>
+			<p>I've never done automated testing in Unity so I researched and attempted some solutions:</p>
+			<ul>
+				<li>I tried UUnit but the code was outdated and didn't work properly. I tried to fix it but I don't have the time to get it working, unfortunately.</li>
+				<li>I tried SharpUnit which seemed more well-maintained but doesn't seem to be compatible with UnityScript.</li>
+				<li><a href="http://blog.sebaslab.com/ioc-container-for-unity3d-part-1/">"Inversion of Control"</a> may be another viable solution outside the scope of this project.</li>
+				<li><a href="http://u3d.as/content/eye3ware/test-star/2dB">Test Star</a> looks like a great commercial solution and I'd love to have a chance to try it out in the future.</li>
+			</ul>
+			<p>All in all, my impression is that it's a lot easier to do testing if we were to move toward C# instead of UnityScript. Unfortunately, automated testing in Unity is very much in its infancy.</p>
+		</div>
+		<p class="footer">&laquo; created with <a href="http://unity3d.com/unity/" title="Go to unity3d.com">Unity</a> &raquo;</p>
+	</body>
+</html>

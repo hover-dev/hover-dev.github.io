@@ -1,0 +1,189 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" media="all">
+	<link rel="stylesheet" type="text/css" href="style.css" media="all">
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.0.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
+	<script type="text/javascript" src="main.js"></script>
+</head>
+<body>
+	<a href="appendix.html">Appendix</a>
+	<h1>Setting Up</h1>
+	<h2>Player Creation</h2>
+	<p>
+		Flip over 3 more species cards then there are players. Players somehow determine which races they want and the other 3 become NPC races.
+	</p>
+	<p>
+		As you pick your race, draw 2 random cards from the creation deck. These cards represent a great fate dealt to your species and you decide how they dealt with it. Your decision ripples throughout history, bestowing a minor trait to your species. When you determine the NPCs, somehow determine 1 trait for each of them.
+	</p>
+	<p>
+		Also grab the three Action Cards for your race.
+	</p>
+	<b>SOME SORT OF AUCTION INSTEAD? REMOVE NPCs?</b>
+	<h2>Galaxy Creation</h2>
+	<p>
+		Somehow set up the galaxy appropriately from the tile deck. This involves placing the 3 NPC races on planets. Place each player and NPC on a homeworld along with their starting fleet as dictated by their species. Last, place a Discovery Token on each hex.
+	</p>
+	<p>
+		Randomly pick 3 tokens for each of the 5 technology tiers as well. These will represent the technologies available to all players in this game.
+	</p>
+
+
+	<h1>Playing</h1>
+	<h2>Play Order</h2>
+	<p>
+		At the game's start, somehow pick a starting player and go clockwise. When everyone has gone once, resolve a Council card and repeat.
+	</p>
+	<h2>Taking Actions</h2>
+	<p>
+		On each turn you have 2 actions: a Major Event and a Minor Events. Alternatively, your Major Event can be traded in for two Minor Events, resulting in three Minor Events for your turn.
+	</p>
+	<div class="pad-left">
+		<p>
+			Major Events can be used to:
+		</p>
+		<ul>
+			<li>Engage in <a href="#taking_actions" class="battle-b">Battles</a></li>
+			<li>Create <a href="#taking_actions" class="trade-b">Alliances</a></li>
+			<li>Research <a href="#taking_actions" class="tech-b">Technology</a></li>
+		</ul>
+		<p>
+			Minor Events can be used to:
+		</p>
+		<ul>
+			<li><a href="#taking_actions" class="build-b">Build</a></li>
+			<li><a href="#taking_actions" class="move-b">Move Ships</a></li>
+			<li>Play an <b>Action Card</b></li>
+			<li>Spread or stop <a href="#taking_actions" class="propaganda-b">Propaganda</a></li>
+			<li class="l">Retry a <a href="#taking_actions" class="battle-b">Planetary Invasion</a></li>
+			<li class="l"><a href="#taking_actions" class="battle-b">Retreat</a></li>
+		</ul>
+	</div>
+	<h2>End of Round</h2>
+	<p>
+		After everyone, a Council Card must be played to convene the races and investigate the galaxy. This will begin <a href="#end_of_round" class="council-b">Council Voting</a> and introduce a new Objective. Afterward, somehow pick a random hex and place a Discovery Token on it if it doesn't already have one.
+	</p>
+	<p>
+		Afterward, refresh all planets and their resources and begin a new round.
+	</p>
+	<h2>Winning</h2>
+	<p>
+		A non-allied player wins when he has 7 Victory Points. Allied players win with 10 Victory Points. Victory Points are usually gathered through Council or Objective Cards.
+	</p>
+
+
+
+
+
+	<!-- Modals -->
+	<div class="battle dialog" title="Fighting and Retreating">
+		<p>
+			When you choose to fight a battle, pick a hex that has another player's ships or planets adjacent to a hex containing your ships. Then pick which of those hexes containing your ships will take part in the battle.
+		</p>
+		<h2>Ship to Ship</h2>
+		<p>
+			Count up the <b>Battle Points</b> on each side: 1 per Fighter, 2 per Destroyer, and 4 per Dreadnaught. Then spend as many as you wish on cards, 3 for Small Tactics and 10 for Big Tactics. Small Tactics can change the battle in your favor at a cost while Big Tactics will confer large bonuses to help you crush your enemy. The remaining Battle Points get you dice to attack with, one for one.
+		</p>
+		<p>
+			Both players activate any Action or Tactics cards they wish and roll their dice. You must then assign a hit for each dice your opponent rolled 4 or higher on. Attacks happen simultaneously so be sure to roll your dice before you apply hits. Remove destroyed ships from the board, discard your Tactics cards, and either spend a Minor Event to <b>retreat</b> or repeat from counting Battle Points. 
+		</p>
+		<h2>Ship to Planet</h2>
+		<p>
+			If there are no enemy ships remaining, you may immediately begin invading the planet. If the planet is not owned by anyone then take its card and add it to your resources. Otherwise, you must first roll a die and get higher than the planet's Defence. If you do not roll high enough then you get nothing but may <b>try again</b> with a Minor Action, as long as your ships are above the planet.
+		</p>
+		<p>
+			When you take the planet's card, it is expended until the end of the round.
+		</p>
+	</div>
+	<div class="move dialog" title="Moving Fleets">
+		<p>
+			When moving ships, choose a hex and move any or all of your ships from an adjacent hex.
+		</p>
+		<p>
+			You may not move through hexes occupied by other players' ships. If you move through a hex with a Discovery Token, you must resolve the effects of the token before proceeding.
+		</p>
+	</div>
+	<div class="trade dialog" title="Creating Alliances">
+		<p>
+			Alliances are tenuous in this brave new frontier but can yield great rewards. Alliances consist of exactly 2 players and a player may only belong to one alliance. Players in an alliance must achieve a <b>joint victory</b> with the sum of their Victory Points. However, they need more points in total than a single player would, as detailed in the Victory section of the rules.
+		</p>
+		<p>
+			In order to form an Alliance, you must have at least one of your ships in an adjacent hex to at least one of theirs.
+		</p>
+		<p>
+			If you attack your allied player then the Alliance is void and you must abstain at the next Council Vote.
+		</p>
+	</div>
+	<div class="tech dialog" title="Research Technology">
+		<p>
+			You must pay 6 production to research a new technology. Anyone may build a Tier 1 technology but building from Tier X requires that you first have 2 technology from Tier X-1 already.
+		</p>
+		</p>
+		<p>
+			Technology usually provides persistant benefits to various aspects of the game. 
+		</p>
+	</div>
+	<div class="build dialog" title="Building Ships and Ports">
+		<p>
+			When you decide to build, choose either a planet to build a port on or a port to build ships at. Spend the appropriate resources and place them:
+		</p>
+		<table>
+			<tr>
+				<td>Space Port</td>
+				<td>3 production, 1 per turn</td>
+				<td>3 per player</td>
+				<td>Does not attack, attached to a planet</td>
+			</tr>
+			<tr>
+				<td>Fighter</td>
+				<td>1 production</td>
+				<td>10 per player</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>Destroyer</td>
+				<td>3 production</td>
+				<td>7 per player</td>
+				<td>+1 to invading planets</td>
+			</tr>
+			<tr>
+				<td>Dreadnaught</td>
+				<td>6 production</td>
+				<td>5 per player</td>
+				<td>2 hits to kill</td>
+			</tr>
+		</table>
+		<p>
+			Ports can not be used until the Council is convened for that round. They can also be assigned hits in combat but do contribute any Battle Points.
+		</p>
+		<p>
+			At any point you may scuttle a ship or a port, destroying it. This can be useful if you've hit the limit on what you can build.
+		</p>
+	</div>
+	<div class="action dialog" title="Action Cards">
+		Choose an Action Card from your hand.
+	</div>
+	<div class="council dialog" title="Council Voting">
+		s
+	</div>
+	<div class="propaganda dialog" title="Spread or Stop Propaganda">
+		<p>
+			Propaganda gives you a way to stretch your influence across the galaxy and strike at the heart of your opponents.
+		</p>
+		<p>
+			 Place one Riot Counter on an opponents planet and if the number of counters is 5 or more then the planet begins <b>Rioting</b>. You can not place counters on a planet that's already being influenced by another player.
+		</p>
+		<p>
+			Rioting planets can't be expended for resources and you can't build from a port on a Rioting planet. To end a Riot, you must remove the Riot Counters. They are removed when the planet is exchanged between players. They can also be removed if the owner has at least as many ships as Riot Counters and spends a minor action.
+		</p>
+	</div>
+
+</body>
+</html>
+
+<!--
+
+	-->

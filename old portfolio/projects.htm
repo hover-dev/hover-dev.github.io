@@ -1,0 +1,155 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+<title>Justin Scott's Portfolio - Projects</title> 
+
+<link rel="stylesheet" type="text/css" href="main.css" />
+
+<!-- include jQuery library --> 
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script> 
+<script type="text/javascript" src="http://cloud.github.com/downloads/malsup/cycle/jquery.cycle.all.2.72.js"></script> 
+<!-- include extra javascript -->
+<script type="text/javascript" src="extra.js"></script> 
+
+</head> 
+<body>
+  <div id="header">
+    <h1>Justin Scott</h1><h3>Graphics and Games</h3>
+  </div>
+  <div id="container">
+    <div id="sidebar">
+      <ul>
+        <li><span><a href="index.htm">Home</a></span></li>
+        <li><span><a href="projects.htm">Projects</a></span></li>
+        <li><span><a href="resume.pdf" title="Download my resume">Download Resumé</a></span></li>
+        <li><span><a href="http://ca.linkedin.com/in/justinvscott" target="_blank">LinkedIn Profile</a></span></li>
+        <li></li>
+      </ul>
+    </div>
+    <div id="projects">
+      <div class="project">
+        <div id="picture">
+          <object width="320" height="252"><param name="movie" value="http://www.youtube.com/v/Mpnk5gy9qxY?fs=1&amp;hl=en_US"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/Mpnk5gy9qxY?fs=1&amp;hl=en_US" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="320" height="252"></embed></object>
+        </div>
+        <div id="text">
+          <h4>
+            20 Day Game Engine
+              <span>
+              <a href="projects/gameEngine_code.zip" title="Download the client code"><img src="download.png" width="20" height"20"/>Source</a>
+              <a href="projects/gameEngine_exe.zip" title="Download the client program"><img src="download.png" width="20" height"20"/>Executable</a>
+            </span>
+          </h4>
+          <p>
+            This began as an overly ambitious project during a particularly long break between semesters.  With 3 weeks I took it upon myself to learn and master the DirectX libraries for C++ in order to create a great multiplayer RPG title.  Since I expected more of a learning experience than a solid final product, I would be working alone on all the code and assets.  The project would also be done from scratch and without non-standard libraries to allow me to do more under-the-hood coding.  SVN was used to do code management on Agile development and to keep track of progress.
+          </p>
+          <div class="hide">
+            <p>
+              Because of my choice to use Blender and the time deadline, I eschewed some more popular methods of terrain creation such as height mapping and decided to go with a collection of large models.  This allowed me to create terrain with concavity and intricate texturing with ease, and the per-polygon collision detection would dynamically allow the player to trek across it without having to create a second bounding mesh, which is not great for performance but excellent for both coding and modeling times.  Animated models using skeleton structures are also supported, although it proved difficult to obtain the .x files needed to make that functionality useful.
+            </p>
+            <p>
+              Network functionality was also required, so I created a server program and implemented a client-server functionality using UDP protocols that allowed the server to act as a lobby for up to 8 players.  Standard winsock libraries were used to facilitate this and a console was added to display server messages.  This also meant implementing multithreaded code to allow the clients and server to communicate without interfering with the DirectX side of things.
+            </p>
+            <p>
+              When the smoke had cleared, I didn't have the RPG I wanted, but I had a solid 1st person model viewer.  What I had was an excellent start to create a game, even though no actual game functionality was implemented.  Overall I was pretty happy with it because I learned a lot about how DirectX handles models and animation, how Windows handles network connections, and how to deal with network and multithreaded development.
+            </p>
+          </div>
+          <a href="#" class="more">More...</a>
+        </div>
+      </div>
+      
+      <div class="project">
+        <div id="picture">
+          <object width="320" height="252"><param name="movie" value="http://www.youtube.com/v/tqajUWQZJxw&hl=en_US&fs=1"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/tqajUWQZJxw&hl=en_US&fs=1" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="320" height="252"></embed></object>
+        </div>
+        <div id="text">
+          <h4>
+            Mystery Island
+            <span>
+              <a href="projects/mysteryIsland_installer.zip" title="Download the installer"><img src="download.png" width="20" height"20"/>Installer</a>
+              <a href="projects/mysteryIsland_exe.zip" title="Download the executable"><img src="download.png" width="20" height"20"/>Executable</a>
+            </span>
+          </h4>
+          <p>
+            Currently in development with C# and XNA, this project is a fun project to unwind in my spare time.  It's sating my curiosity about procedurally generated content while at the same time challenging me to create an organic world out of rigid data structures with dynamic content.  While XNA provides a more high-level approach, there's still a great deal of problem solving to be done to create satisfactory results.  The progress and source code is being tracked via a local SVN.
+          </p>
+          <div class="hide">
+              <p>
+                As procedural content is a big part of this project, I've written my own fractal terrain generator from scratch for the 2D "height map" and my own methods for populating that blank slate of land realistically.  On top of that, advanced platforming AI is needed which will take advantage of the A* algorithm and various tricks to trek across the dynamic world.  I also had to create simple physics and lighting routines to get the feel I wanted for the game.
+              </p>
+              <p>
+                Up next to add to the game are weather patterns, a day-and-night cycle, an inventory and crafting system, and base-building gameplay in a 2D platformer environment.  Not an easy task, but a fun one for sure.
+              </p>
+          </div>
+          <a href="#" class="more">More...</a>
+        </div>
+      </div>
+      
+      <div class="project">
+        <div id="picture">
+          <img src="city_generator.jpg" width="320" height="252" />
+        </div>
+        <div id="text">
+          <h4>
+            Algorithmic Architecture
+            <span>
+              <a href="projects/citygen_presentation.pdf" title="Download the presentation"><img src="download.png" width="20" height"20"/>Presentation</a>
+              <a href="projects/citygen_report.pdf" title="Download the report"><img src="download.png" width="20" height"20"/>Report</a>
+            </span>
+          </h4>
+          <p>
+            Using an academic paper from 2001, a friend and I created a city generator with a deadline.  We settled on using C++, Qt, and OpenGL so that we could develop in both Windows and Linux environments.  I personally took ownership of the road generation using various terrain parameters.  While the fundamental concepts were given to us in the paper, the explanation were vague and details were frequently omitted, giving us a lot of room for new research and ideas.
+          </p>
+          <div class="hide">
+            <p>
+              As the report and presentation point out, I had to make extensive use of L-Systems, a unique implementation of data structures that benefits fractal creations.  The L-Systems have a series of global and local goals that make use of some design rules to create new roads.  2D collision detection was utilized as well in order to determine if roads should intersect with each other.  When these systems are combined with a set of design rules to determine when to branch, bridge, and create smaller roads, you get a complex web that simulates city streets quite accurately.
+            </p>
+            <p>
+              There are many improvements that could be made on this project, but I consider it complete.  Framerates could be improved, as well as the rendering and building generation, but it's hard to justify the hours I'd have to put into it for the value I'd get back.  The major problem lies in the initial framework as the L-Systems have significant flaws that have been corrected in more modern city generation papers.  I know that I wouldn't be happy with it until I'd rewritten the whole thing, so I call it complete for my own sanity.
+            </p>
+            <p>
+              We created the program we had set out to create and learned quite a few things about procedural generation in the process.  Having done this, I feel that I could easily implement random plant generation or implement similar road systems in future projects and games.  When we presented the project to our peers we got good feedback and what more could you ask for.
+            </p>
+          </div>
+          <a href="#" class="more">More...</a>
+        </div>
+      </div>
+
+      <div class="project">
+        <div id="picture"><img src="ray_tracer.jpg" width="320" height="252" /></div>
+        <div id="text">
+          <h4>
+            Ray Tracer
+            <span>
+              <a href="projects/raytracer_code.zip" title="Download the source"><img src="download.png" width="20" height"20"/>Source</a>
+              <a href="projects/raytracer_exe.zip" title="Download the executable"><img src="download.png" width="20" height"20"/>Executable</a>
+            </span>
+          </h4>
+          <p>
+            Some of the low-level stuff was done for me in this project, but I was responsible for all the math behind gathering information from the rays and where the rays go.  In addition, I implemented a few extra features that were not required.  It was created using OpenGL, GLUT, and C++ and supports a host of optional features.
+          </p>
+          <p>
+            Linear algebra and triginometry were utilized heavily to plot the trajectories of the rays.  Shadows are created by determining what objects were passed through and at what opacity.  Bending rays via reflection and refraction are also possible options to give a professional and realistic look to a scene.  Interestingly, diffusion and supersampling were also made possible by fiddling with the raw data once it's all collected.  An optional checkerboard was implemented as well, as it has been in every ray tracer since the dawn of time.
+          </p>
+        </div>
+      </div>
+      
+      <div class="project">
+        <div id="picture"><img src="microwave_game.jpg" width="320" height="252" /></div>
+        <div id="text">
+          <h4>Various Projects</h4>
+          <p>
+            I program not only as a job, but as a hobby, and thus have created many smaller projects.  Some are lost to the sands of time, some never got very far, but all were proud achievements.  This section is dedicated in memory to:
+            <ul>
+              <li>Adventure Game - Used <a href="http://www.adventuregamestudio.co.uk/">AGS</a> for a cooperative project with an artist</li>
+              <li>Roguelike Game - Developed on Linux with the pdcurses library</li>
+              <li>Mythos - Based on <a href="http://www.thalcos.com/divusex.htm">Divus Ex</a>, an old idea and successful <a href="mythos.htm">Java Applet</a></li>
+              <li>And many more I've forgotten and lost</li>
+            </ul>
+            
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body> 
+</html> 

@@ -1,13 +1,13 @@
-var houses = ["Bear", "Elk", "Falcon", "Serpent", "Fox", "Wolf"];
+var houses = 		["Bear", 		"Elk", 		"Falcon", 	"Serpent", 	"Fox", 		"Wolf"];
+var family_names = 	["Burghe", 		"Elk", 		"Thorne", 	"Mwnn", 	"Yvarai", 	"Adrente"];
+var virtues = 		["Strength", 	"Cunning", 	"Courage", 	"Wisdom", 	"Beauty", 	"Prowess"];
 var places = ["first", "second", "third", "fourth", "fifth", "sixth"];
 var numbers = ["zero", "one", "two", "three", "four", "five"];
 var integers = ["0", "1", "2", "3", "4", "5"];
 var titles = ["Barons", "Barons", "Barons", "Counts", "Counts", "Marquis"];
-var family_names = ["Urvus", "Alcedus", "Arcel", "Sercon", "Vulorma", "Inperus"];
 var public_name_cleared = false;
 var secret_name_cleared = false;
 var age_cleared = false;
-var virtues = ["Strength", "Cunning", "Courage", "Wisdom", "Beauty", "Prowess"];
 var regions = ["Castle", "Farm", "Forest", "Hills", "Mountain", "Plains", "Ruin", "Shoreline/River", "Swamp", "Village"];
 			
 $(document).ready(function() {

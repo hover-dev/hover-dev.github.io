@@ -93,10 +93,13 @@ function NameCtrl($scope) {
 		{name: "Adrente",		meaning: "My weapon is myself",				house: "Wolf",		virtue: "Prowess"}
 	];
 
-	$scope.random = {
-		name: $scope.names[Math.floor(Math.random() * $scope.names.length)].name,
-		meaning: $scope.names[Math.floor(Math.random() * $scope.names.length)].meaning
+	$scope.randomize = function() {
+		$scope.random = {
+			name: $scope.names[Math.floor(Math.random() * $scope.names.length)].name,
+			meaning: $scope.names[Math.floor(Math.random() * $scope.names.length)].meaning
+		};
 	};
+	$scope.randomize();
 
 	$scope.searchString = "";
 	$scope.nameSearch = function(searchString) {

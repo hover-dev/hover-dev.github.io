@@ -1,0 +1,27 @@
+<div class="map">
+	<div class="tile" ng-repeat="index in [0,1,2,3,4,5,6,7,8]">
+		{{index}}
+	</div>
+</div>
+<div class="cards"></div>
+
+<!-- Popup for items and events -->
+<div class="modal fade" id="popup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title" id="myModalLabel">{{popup.name}}</h4>
+			</div>
+			<div class="modal-body">
+				<h1>{{popup.header}}</h1>
+				<p ng-repeat="paragraph in popup.text">
+					{{paragraph}}
+				</p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">TODO:options based on type</button>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

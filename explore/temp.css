@@ -1,0 +1,24 @@
+body, html {
+	height: 100%;
+}
+
+#popup h1 {
+	font-size: 2em;
+}
+
+.template-container {
+	height: 100%;
+}
+.map {
+	height: 60%;
+}
+.tile {
+	float:left;
+	height:33.33%;
+	width:33.33%;
+	background-color: blue;
+}
+.cards {
+	height: 40%;
+	background-color: red;
+}

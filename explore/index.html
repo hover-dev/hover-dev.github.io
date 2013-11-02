@@ -1,0 +1,21 @@
+<!doctype html>
+<html ng-app lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Explorer's Story</title>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+	<script src="data/items.js"></script>
+	<script src="data/themes.js"></script>
+	<script src="game.js"></script>
+	<link rel="stylesheet" href="temp.css">
+
+	<!-- toss in jquery/bootstrap -->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.1/css/bootstrap.min.css">
+	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div ng-controller="GameCntl" class="template-container" ng-include="state" onload="stateChanged()">
+	</div>
+</body>
+</html>

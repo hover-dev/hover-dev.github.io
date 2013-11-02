@@ -1,0 +1,7 @@
+<h1>{{theme.intro.header}}</h1>
+<p ng-repeat="paragraph in theme.intro.text">
+	{{paragraph}}
+</p>
+<button ng-click="pickTrait('knowledge')">{{theme.intro.choices[0]}}</button>
+<button ng-click="pickTrait('speed')">{{theme.intro.choices[1]}}</button>
+<button ng-click="pickTrait('courage')">{{theme.intro.choices[2]}}</button>

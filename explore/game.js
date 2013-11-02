@@ -25,7 +25,10 @@ function GameCntl($scope) {
 	};
 	$scope.stateChanged = function() {
 		if ($scope.state === $scope.States.EXPLORE) {
-				//$('#popup').modal("show");
+			//$('#popup').modal("show");
+			$(document).ready(function () {
+				$scope.setTile(3,2);
+			});
 		}
 	};
 
@@ -47,18 +50,38 @@ function GameCntl($scope) {
 		$scope.drawItem();
 	};
 
+	$scope.tiles = [];
+	for (var i = 0; i < 9; i++) {
+		$scope.tiles.push({
+			name: i,
+			class: "tile"+rand(1,3)
+		});
+	}
+
 	// Set the theme
 	$scope.theme = THEMES[rand(0,THEMES.length)];
-
-	// Helper to pick up items
-	$scope.drawItem = function() {
-		var items = $scope.theme.items;
-		$scope.popup = items[rand(0,items.length)];
-	};
 
 	// Phobias and disabilities that help define our character
 	// TODO: rethink this mechanics
 	$scope.Flaws = [
 
 	];
+
+	/**
+	* HELPERS
+	*/
+
+	// Draw a random item
+	$scope.drawItem = function() {
+		var items = $scope.theme.items;
+		$scope.popup = items[rand(0,items.length)];
+	};
+
+	// Set a tile
+	$scope.setTile = function(tileIndex, imgIndex) {
+		var background = $($('.map').children()).length;
+		console.log(background);
+		background = background.replace(/.\.jpg/g, imgIndex+".jpg");
+		$($('.map').children()[tileIndex]).css('background-image', background);
+	}
 }

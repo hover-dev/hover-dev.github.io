@@ -12,11 +12,24 @@ body, html {
 .map {
 	height: 60%;
 }
-.tile {
-	float:left;
+.map .tile-container {
 	height:33.33%;
 	width:33.33%;
-	background-color: blue;
+	float: left;
+}
+.tile {
+	background-size: cover;
+	width: 100%;
+	height: 100%;
+}
+.tile1 {
+	background-image: url(img/tile1.jpg);
+}
+.tile2 {
+	background-image: url(img/tile2.jpg);
+}
+.tile3 {
+	background-image: url(img/tile3.jpg);
 }
 .cards {
 	height: 40%;

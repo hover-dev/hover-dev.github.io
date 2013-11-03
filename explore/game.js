@@ -26,9 +26,6 @@ function GameCntl($scope) {
 	$scope.stateChanged = function() {
 		if ($scope.state === $scope.States.EXPLORE) {
 			//$('#popup').modal("show");
-			$(document).ready(function () {
-				$scope.setTile(3,2);
-			});
 		}
 	};
 
@@ -42,7 +39,7 @@ function GameCntl($scope) {
 		knowledge: 2,
 		speed: 2,
 		courage: 2,
-		inventory: []
+		hand: [OCEAN_ITEMS[rand(0,2)],OCEAN_ITEMS[rand(0,2)],OCEAN_ITEMS[rand(0,2)],OCEAN_ITEMS[rand(0,2)],OCEAN_ITEMS[rand(0,2)],OCEAN_ITEMS[rand(0,2)]]
 	};
 	$scope.pickTrait = function(name) {
 		$scope.character[name] += 1;
@@ -71,17 +68,15 @@ function GameCntl($scope) {
 	* HELPERS
 	*/
 
+	// Popup for a given card
+	$scope.showCard = function(card) {
+		$scope.popup = card;
+		$('#popup').modal("show");
+	};
+
 	// Draw a random item
 	$scope.drawItem = function() {
 		var items = $scope.theme.items;
-		$scope.popup = items[rand(0,items.length)];
+		$scope.showCard(items[rand(0,items.length)]);
 	};
-
-	// Set a tile
-	$scope.setTile = function(tileIndex, imgIndex) {
-		var background = $($('.map').children()).length;
-		console.log(background);
-		background = background.replace(/.\.jpg/g, imgIndex+".jpg");
-		$($('.map').children()[tileIndex]).css('background-image', background);
-	}
 }

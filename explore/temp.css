@@ -9,6 +9,8 @@ body, html {
 .template-container {
 	height: 100%;
 }
+
+/* the map and its tiles */
 .map {
 	height: 60%;
 }
@@ -22,6 +24,30 @@ body, html {
 	width: 100%;
 	height: 100%;
 }
+
+/* your hand and its cards */
+.hand {
+	height: 40%;
+}
+.hand .card-container {
+	height: 12vh;
+	width: 12vh;
+	float: left;
+	padding: 1vh;
+	margin: 0 0.5vh;
+	margin-bottom: 2.3em;
+}
+.card {
+	background-size: cover;
+	width: 100%;
+	height: 100%;
+	border-radius: 150px;
+}
+.card-caption {
+	text-align: center;
+}
+
+/* Tile pictures */
 .tile1 {
 	background-image: url(img/tile1.jpg);
 }
@@ -31,7 +57,10 @@ body, html {
 .tile3 {
 	background-image: url(img/tile3.jpg);
 }
-.cards {
-	height: 40%;
-	background-color: red;
+/* Item pictures */
+.item-compass {
+	background-image: url(img/compass.jpg);
+}
+.item-voodoo-charm {
+	background-image: url(img/voodoo-charm.jpg);
 }

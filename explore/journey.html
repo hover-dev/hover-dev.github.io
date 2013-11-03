@@ -1,6 +1,6 @@
 <div class="map">
 	<div class="tile-container" ng-repeat="tile in tiles">
-		<div class="tile" ng-class="tile.class"></div>
+		<div class="tile" ng-class="tile.class" ng-click="clickedTile($index)"></div>
 	</div>
 </div>
 <div class="hand">

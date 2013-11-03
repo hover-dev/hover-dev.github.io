@@ -74,10 +74,10 @@ function GameCntl($scope) {
 	// TODO: make start tiles depend on theme
 	$scope.map = [{ // ocean
 		"0,0": {
-			class: "tile1"//"start"
+			class: "start"
 		},
 		"1,0": {
-			class: "tile2"//"buoy"
+			class: "buoy"
 		},
 		"2,0": {
 			class: "shore"
@@ -89,7 +89,7 @@ function GameCntl($scope) {
 		}
 	}];
 	UNEXPLORED_TILE = {
-		class: "tile3"//"undiscovered"
+		class: "unexplored"
 	}
 
 	// Phobias and disabilities that help define our character
@@ -137,4 +137,24 @@ function GameCntl($scope) {
 		}
 	}
 	$scope.redrawTiles();
+
+	$scope.clickedTile = function(index) {
+		if (index == 1 || index == 3 || index == 5 || index == 7) {
+			switch (index) {
+				case 1:
+					$scope.character.position.y += 1;
+					break;
+				case 3:
+					$scope.character.position.x -= 1;
+					break;
+				case 5:
+					$scope.character.position.x += 1;
+					break;
+				case 7:
+					$scope.character.position.y -= 1;
+					break;
+			}
+			$scope.redrawTiles();
+		}
+	}
 }

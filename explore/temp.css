@@ -48,14 +48,17 @@ body, html {
 }
 
 /* Tile pictures */
-.tile1 {
-	background-image: url(img/tile1.jpg);
+.start {
+	background-image: url(img/start.jpg);
 }
-.tile2 {
-	background-image: url(img/tile2.jpg);
+.buoy {
+	background-image: url(img/buoy.jpg);
 }
-.tile3 {
-	background-image: url(img/tile3.jpg);
+.shore {
+	background-image: url(img/shore.jpg);
+}
+.unexplored {
+	background-image: url(img/unexplored.jpg);
 }
 /* Item pictures */
 .item-compass {

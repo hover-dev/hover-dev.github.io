@@ -1,11 +1,13 @@
 <div class="map">
 	<div class="tile-container" ng-repeat="tile in tiles">
-		<div class="tile" ng-class="tile.class" ng-click="clickedTile($index)"></div>
+		<div class="tile" ng-class="tile.type" ng-click="clickedTile($index, tile.type)">
+			{{tile.name}}
+		</div>
 	</div>
 </div>
 <div class="hand">
 	<div class="card-container" ng-click="showCard(card)" ng-repeat="card in character.hand">
-		<div class="card" ng-class="card.class"></div>
+		<div class="card" ng-class="card.type"></div>
 		<div class="card-caption">
 			{{card.name}}
 		</div>

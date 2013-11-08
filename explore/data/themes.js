@@ -3,9 +3,15 @@ ocean, forest, chinese mountains
 */
 
 // Adventure themes
+//	name - unique id
+//	intro/arrival event cards:
 //		header - hook the reader to the story
 //		text - paragraphs explaining the current position
 //		choices - pick a knowledge, speed, or courage character
+//		arrival
+//	items - items available in this theme
+//	tiles - the tiles available to draw [first, second, both]
+//	cards - the cards available to draw [first, second, both]
 
 THEMES = [
 {
@@ -32,7 +38,8 @@ THEMES = [
 			"land ho!"
 		]
 	},
-	items: OCEAN_ITEMS
+	items: OCEAN_ITEMS,
+	tiles: OCEAN_TILES
 }/*,
 {
 	name: "forest",

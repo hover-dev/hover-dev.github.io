@@ -60,6 +60,13 @@ body, html {
 .unexplored {
 	background-image: url(img/unexplored.jpg);
 }
+.floating-crate {
+	background-image: url(img/start.jpg);
+}
+.choppy-waters {
+	background-image: url(img/start.jpg);
+}
+
 /* Item pictures */
 .item-compass {
 	background-image: url(img/compass.jpg);

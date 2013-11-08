@@ -1,5 +1,5 @@
 /**
-* Psuedo classes because I'm too lazy to strictly define them:
+* Psuedo typees because I'm too lazy to strictly define them:
 *
 * Cards:
 *   - Name
@@ -7,13 +7,13 @@
 *   - Text (array of paragraphs)
 *   - take (fn)
 *   - use (fn)
-*   - Class (css)
+*   - type (css)
 *
 * Tiles:
-*   - Class (css)
+*   - type (css)
 *
 * Will probably want to refactor these as time goes on.
-* Maybe even bring them into proper classes and instances?
+* Maybe even bring them into proper typees and instances?
 */
 
 function GameCntl($scope) {
@@ -74,22 +74,26 @@ function GameCntl($scope) {
 	// TODO: make start tiles depend on theme
 	$scope.map = [{ // ocean
 		"0,0": {
-			class: "start"
+			name: "Open Water",
+			type: "start"
 		},
 		"1,0": {
-			class: "buoy"
+			name: "Buoy",
+			type: "buoy"
 		},
 		"2,0": {
-			class: "shore"
+			name: "Large Island",
+			type: "shore"
 		}
 	},
 	{ // shore
 		"0,0": {
-			class: "dock"
+			name: "Old Docks",
+			type: "docks"
 		}
 	}];
 	UNEXPLORED_TILE = {
-		class: "unexplored"
+		type: "unexplored"
 	}
 
 	// Phobias and disabilities that help define our character
@@ -138,9 +142,11 @@ function GameCntl($scope) {
 	}
 	$scope.redrawTiles();
 
-	$scope.clickedTile = function(index) {
-		if (index == 1 || index == 3 || index == 5 || index == 7) {
+	// Clicking a tile and moving
+	$scope.clickedTile = function(index, type) {
+		if (index == 1 || index == 3 || index == 5 || index == 7 || index == 4) {
 			switch (index) {
+				// Move compass directions
 				case 1:
 					$scope.character.position.y += 1;
 					break;
@@ -153,7 +159,38 @@ function GameCntl($scope) {
 				case 7:
 					$scope.character.position.y -= 1;
 					break;
+				// Move into the other board
+				case 4:
+					// if middle tile is a transition tile between maps
+					break;
 			}
+
+			// On arriving at the next tile
+			var currentBoard = $scope.map[$scope.character.board];
+			var position = $scope.character.position.x+","+$scope.character.position.y;
+			if (position in currentBoard) {
+				// Existing tile
+			}
+			else {
+				// Flash tile to give us a chance to see it before we get cards
+				//$('.tile').effect('highlight', {color:'white'}, 'normal');
+				// New tile
+				var tiles = $scope.theme.tiles[$scope.character.board];
+				var newTile = tiles[rand(0,tiles.length)];
+				$scope.map[$scope.character.board][position] = newTile;
+				// Draw cards for the tile
+				for (var i = 0; i < newTile.events; i++) {
+
+				}
+				for (var i = 0; i < newTile.fears; i++) {
+
+				}
+				for (var i = 0; i < newTile.items; i++) {
+					$scope.drawItem();
+				}
+			}
+
+			// Draw all the changes
 			$scope.redrawTiles();
 		}
 	}

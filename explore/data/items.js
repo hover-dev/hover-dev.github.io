@@ -21,7 +21,7 @@ OCEAN_ITEMS = [
 		use: function() {
 			// remove Lost and discard if you are Lost
 		},
-		class: "item-compass"
+		type: "item-compass"
 	},
 	{
 		name: "Voodoo Charm",
@@ -34,7 +34,7 @@ OCEAN_ITEMS = [
 			// success if in an event
 			// throw otherwise
 		},
-		class: "item-voodoo-charm"
+		type: "item-voodoo-charm"
 	}
 ];
 

@@ -108,6 +108,7 @@ function GameCntl($scope) {
 
 	// Popup for a given card
 	$scope.showCard = function(card) {
+		//gControlsLocked = false;
 		$scope.popup = card;
 		$('#popup').modal("show");
 	};
@@ -142,8 +143,52 @@ function GameCntl($scope) {
 	}
 	$scope.redrawTiles();
 
+	// Animate a freshly revealed tile and draw its cards
+	$scope.discoverNewTiles = function() {
+		if (!$scope.tiles[4].isNew) return;
+		$scope.tiles[4].isNew = false;
+
+		// Flash tile to give us a chance to see it before we get cards
+		gControlsLocked = true;
+		var tile = $($('.tile')[4]);
+		tile.css('z-index','100');
+		tile.animate(
+			{transform: 'scaleX(2.5) scaleY(2.5)'},
+			'normal',
+			function() {
+				window.setTimeout(function() {
+					tile.animate(
+						{transform: 'scaleX(1) scaleY(1)'},
+						'normal',
+						function() {
+							tile.css('z-index','0');
+							gControlsLocked = false;
+						});
+				}, 1000);
+			}
+		);
+
+		// Draw cards for the tile
+		for (var i = 0; i < $scope.tiles[4].events; i++) {
+
+		}
+		for (var i = 0; i < $scope.tiles[4].fears; i++) {
+
+		}
+		for (var i = 0; i < $scope.tiles[4].items; i++) {
+			//$scope.drawItem();
+		}
+	}
+
+	/**
+	* CONTROLS
+	*/
+
+	gControlsLocked = false;
+
 	// Clicking a tile and moving
 	$scope.clickedTile = function(index, type) {
+		if (gControlsLocked) return;
 		if (index == 1 || index == 3 || index == 5 || index == 7 || index == 4) {
 			switch (index) {
 				// Move compass directions
@@ -181,19 +226,10 @@ function GameCntl($scope) {
 				// Draw all the changes
 				$scope.redrawTiles();
 
-				// Flash tile to give us a chance to see it before we get cards
-				$($('.tile')[4]).animate({transform: 'scaleX(2) scaleY(2)'});
-				// Draw cards for the tile
-				for (var i = 0; i < newTile.events; i++) {
-
-				}
-				for (var i = 0; i < newTile.fears; i++) {
-
-				}
-				for (var i = 0; i < newTile.items; i++) {
-					$scope.drawItem();
-				}
+				// Mark the new tile as such
+				$scope.tiles[4].isNew = true;
 			}
+
 		}
 	}
 }

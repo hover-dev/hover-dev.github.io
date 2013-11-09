@@ -169,15 +169,20 @@ function GameCntl($scope) {
 			var currentBoard = $scope.map[$scope.character.board];
 			var position = $scope.character.position.x+","+$scope.character.position.y;
 			if (position in currentBoard) {
-				// Existing tile
+				// Draw all the changes
+				$scope.redrawTiles();
 			}
 			else {
-				// Flash tile to give us a chance to see it before we get cards
-				//$('.tile').effect('highlight', {color:'white'}, 'normal');
 				// New tile
 				var tiles = $scope.theme.tiles[$scope.character.board];
 				var newTile = tiles[rand(0,tiles.length)];
 				$scope.map[$scope.character.board][position] = newTile;
+
+				// Draw all the changes
+				$scope.redrawTiles();
+
+				// Flash tile to give us a chance to see it before we get cards
+				$($('.tile')[4]).animate({transform: 'scaleX(2) scaleY(2)'});
 				// Draw cards for the tile
 				for (var i = 0; i < newTile.events; i++) {
 
@@ -189,9 +194,6 @@ function GameCntl($scope) {
 					$scope.drawItem();
 				}
 			}
-
-			// Draw all the changes
-			$scope.redrawTiles();
 		}
 	}
 }

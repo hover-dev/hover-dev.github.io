@@ -1,4 +1,4 @@
-/* 
+/*
 compass, voodoo charm, sailor's charm,
 sailor's sword, sailor's cap, gold coin,
 tiki torch, pineapple, missing locket,
@@ -19,8 +19,9 @@ OCEAN_ITEMS = [
 		],
 		take: function() { throw no_take; },
 		use: function() {
-			// remove Lost and discard if you are Lost
+			// remove Lost and discard, if you are Lost
 		},
+		choiceText: "Consult your Compass",
 		type: "item-compass"
 	},
 	{
@@ -29,11 +30,12 @@ OCEAN_ITEMS = [
 		text: [
 			"This "
 		],
-		take: function() { throw no_take; },
+		take: function() { throw no_take; }
 		use: function() {
 			// success if in an event
 			// throw otherwise
 		},
+		choiceText: "Rub your Voodoo Charm",
 		type: "item-voodoo-charm"
 	}
 ];

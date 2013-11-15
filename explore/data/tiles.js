@@ -15,6 +15,6 @@ OCEAN_TILES = [[ // First map
 	}],
 	[ // Second map
 	],
-	[ // Mixed into both boards
+	[ // Third map
 	]
 ];

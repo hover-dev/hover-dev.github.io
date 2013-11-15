@@ -83,13 +83,15 @@ function GameCntl($scope) {
 		},
 		"2,0": {
 			name: "Large Island",
-			type: "shore"
+			type: "shore",
+			transition: {board: 1, x: 0, y:0} //to land
 		}
 	},
 	{ // shore
 		"0,0": {
 			name: "Old Docks",
-			type: "docks"
+			type: "docks",
+			transition: {board: 0, x: 2, y:0} //to ocean
 		}
 	}];
 	UNEXPLORED_TILE = {
@@ -105,6 +107,20 @@ function GameCntl($scope) {
 	/**
 	* HELPERS
 	*/
+
+	// Get a tile's dynamic classes
+	$scope.getTileClass = function(tile) {
+		// Logic for classes
+		var classes = [tile.type];
+		if (tile.transition) classes.push('transition');
+
+		// Compile and return classes
+		var classString = '';
+		for (var x = 0; x < classes.length; x++) {
+			classString += classes[x]+' ';
+		}
+		return classString;
+	};
 
 	// Popup for a given card
 	$scope.showCard = function(card) {
@@ -187,9 +203,9 @@ function GameCntl($scope) {
 	gControlsLocked = false;
 
 	// Clicking a tile and moving
-	$scope.clickedTile = function(index, type) {
+	$scope.clickedTile = function(index, tile) {
 		if (gControlsLocked) return;
-		if (index == 1 || index == 3 || index == 5 || index == 7 || index == 4) {
+		if (index == 1 || index == 3 || index == 4 || index == 5 || index == 7 || index == 4) {
 			switch (index) {
 				// Move compass directions
 				case 1:
@@ -204,9 +220,14 @@ function GameCntl($scope) {
 				case 7:
 					$scope.character.position.y -= 1;
 					break;
-				// Move into the other board
+
+				// Move to another board
 				case 4:
-					// if middle tile is a transition tile between maps
+					if (tile.transition) {
+						$scope.character.board = tile.transition.board;
+						$scope.character.position.x = tile.transition.x;
+						$scope.character.position.y = tile.transition.y;
+					}
 					break;
 			}
 

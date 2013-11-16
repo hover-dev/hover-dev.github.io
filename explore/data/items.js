@@ -30,7 +30,7 @@ OCEAN_ITEMS = [
 		text: [
 			"This "
 		],
-		take: function() { throw no_take; }
+		take: function() { throw no_take; },
 		use: function() {
 			// success if in an event
 			// throw otherwise

@@ -30,9 +30,9 @@ function GameCntl($scope) {
 		MENU: "menu.html",			// Pre-game
 		ARRIVE: "map.html",			// Finding the map
 		EXPLORE: "journey.html",	// The path there
-		LEAVE: "start.html",		// Kicking off your journey
+		LEAVE: "start.html"		// Kicking off your journey
 	};
-	$scope.state = $scope.States.EXPLORE; // read-only!
+	$scope.state = $scope.States.EXPLORE;
 
 	// Functions to change the game state
 	$scope.newGame = function() {

@@ -16,7 +16,7 @@
 * Maybe even bring them into proper typees and instances?
 */
 
-function GameCntl($scope) {
+function GameCntl($scope, $timeout) {
 	function rand(low, high) {
 		return Math.floor((Math.random()*high)+low);
 	}
@@ -108,6 +108,10 @@ function GameCntl($scope) {
 	* HELPERS
 	*/
 
+	$scope.update = function() {
+		// Dummy function to trigger Angular's apply on click
+	}
+
 	// Get a tile's dynamic classes
 	$scope.getTileClass = function(tile) {
 		// Logic for classes
@@ -127,6 +131,7 @@ function GameCntl($scope) {
 		//gControlsLocked = false;
 		$scope.popup = card;
 		$('#popup').modal("show");
+		$scope.$apply();
 	};
 
 	// Add a given card to the character's hand
@@ -137,9 +142,9 @@ function GameCntl($scope) {
 	// Draw a random item
 	$scope.drawItem = function() {
 		var items = $scope.theme.items;
-		var card = items[rand(0,items.length-1)];
-		$scope.showCard(card);
+		var card = items[rand(0,items.length)];
 		$scope.addCard(card);
+		$scope.showCard(card);
 	};
 
 	// Remove current item
@@ -180,7 +185,7 @@ function GameCntl($scope) {
 		$scope.tiles[4].isNew = false;
 
 		// Callback to draw cards for the tile
-		function draw() {
+		function resolve() {
 			for (var i = 0; i < $scope.tiles[4].events; i++) {
 
 			}
@@ -200,15 +205,16 @@ function GameCntl($scope) {
 			{transform: 'scaleX(2.5) scaleY(2.5)'},
 			'normal',
 			function() {
-				window.setTimeout(function() {
-					draw();
+				$timeout(function() {
 					tile.animate(
 						{transform: 'scaleX(1) scaleY(1)'},
 						'normal',
 						function() {
 							tile.css('z-index','0');
 							gControlsLocked = false;
-						});
+							resolve();
+						}
+					);
 				}, 1000);
 			}
 		);

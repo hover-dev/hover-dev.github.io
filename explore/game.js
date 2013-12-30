@@ -129,11 +129,26 @@ function GameCntl($scope) {
 		$('#popup').modal("show");
 	};
 
+	// Add a given card to the character's hand
+	$scope.addCard = function(card) {
+		$scope.character.hand.push(card);
+	}
+
 	// Draw a random item
 	$scope.drawItem = function() {
 		var items = $scope.theme.items;
-		$scope.showCard(items[rand(0,items.length)]);
+		var card = items[rand(0,items.length-1)];
+		$scope.showCard(card);
+		$scope.addCard(card);
 	};
+
+	// Remove current item
+	$scope.dropItem = function(card) {
+		var hand = $scope.character.hand;
+		var index = hand.indexOf(card);
+		// Remove the item and copy it back
+		hand.splice(index, 1);
+	}
 
 	// Redraw tiles on a given coordinate
 	$scope.redrawTiles = function() {
@@ -164,7 +179,20 @@ function GameCntl($scope) {
 		if (!$scope.tiles[4].isNew) return;
 		$scope.tiles[4].isNew = false;
 
-		// Flash tile to give us a chance to see it before we get cards
+		// Callback to draw cards for the tile
+		function draw() {
+			for (var i = 0; i < $scope.tiles[4].events; i++) {
+
+			}
+			for (var i = 0; i < $scope.tiles[4].fears; i++) {
+
+			}
+			for (var i = 0; i < $scope.tiles[4].items; i++) {
+				$scope.drawItem();
+			}
+		}
+
+		// Flash tile to give us a chance to see it before we resolve effects
 		gControlsLocked = true;
 		var tile = $($('.tile')[4]);
 		tile.css('z-index','100');
@@ -173,6 +201,7 @@ function GameCntl($scope) {
 			'normal',
 			function() {
 				window.setTimeout(function() {
+					draw();
 					tile.animate(
 						{transform: 'scaleX(1) scaleY(1)'},
 						'normal',
@@ -183,17 +212,6 @@ function GameCntl($scope) {
 				}, 1000);
 			}
 		);
-
-		// Draw cards for the tile
-		for (var i = 0; i < $scope.tiles[4].events; i++) {
-
-		}
-		for (var i = 0; i < $scope.tiles[4].fears; i++) {
-
-		}
-		for (var i = 0; i < $scope.tiles[4].items; i++) {
-			//$scope.drawItem();
-		}
 	}
 
 	/**

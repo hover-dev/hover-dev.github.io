@@ -1,12 +1,9 @@
 <!doctype html>
-<html ng-app lang="en">
+<html ng-app="gameapp" lang="en">
 <head>
 	<meta charset="UTF-8">
 	<title>Explorer's Story</title>
-	<script src="data/tiles.js"></script>
-	<script src="data/items.js"></script>
-	<script src="data/themes.js"></script>
-	<script src="game.js"></script>
+	<!-- Stylesheets -->
 	<link rel="stylesheet" href="temp.css">
 
 	<!-- toss in jquery/bootstrap -->
@@ -21,18 +18,31 @@
 <body>
 	<div ng-controller="GameCntl" class="template-container" ng-include="state" onload="stateChanged()">
 	</div>
+
+	<!-- Custom scripts -->
+	<script src="data/tiles.js"></script>
+	<script src="data/items.js"></script>
+	<script src="data/themes.js"></script>
+	<script src="helpers.js"></script>
+	<script src="game.js"></script>
 </body>
 </html>
 
 <!--
+	OCEAN and TILES:
+	Have few actual ocean tiles. Make most of it on the island.
+	Third board can be pirate cave on the island.
+
 	TODO:
 	How do I pick up items?
 	How do I use items? During an event?
 	What happens when I explore all the tiles?
 	Make Fears.
 	Make Events.
+	Add movement across boards.
+	Add a third board!
 	How does the Terror initiate?
-	How do I win the game with a Terror? Consider maps with no walls.
 	How is my movement limited across tiles? Needs a algorithm-friendly system.
+	How do I win the game with a Terror? Face that fear! Or just survive...
 	Make more Tiles, Items, Fears, and Events.
 -->

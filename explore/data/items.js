@@ -7,8 +7,6 @@ tribal mask, stone idol, boar tusk,
 
 +sailor item set bonus!
 */
-var no_take = "Item has no effect when taken.";
-var no_use = "Item has no effect when used.";
 OCEAN_ITEMS = [
 	{
 		name: "Compass",
@@ -17,11 +15,6 @@ OCEAN_ITEMS = [
 			"Painted to look like a real, royal sailor's compass. It looks a bit worn but the needle is as keen as ever.",
 			"When you get Lost, this can help you get your bearings again and keep pushing forward."
 		],
-		take: function() { throw no_take; },
-		use: function() {
-			// remove Lost and discard, if you are Lost
-		},
-		choiceText: "Consult your Compass",
 		type: "item-compass"
 	},
 	{
@@ -30,12 +23,6 @@ OCEAN_ITEMS = [
 		text: [
 			"This "
 		],
-		take: function() { throw no_take; },
-		use: function() {
-			// success if in an event
-			// throw otherwise
-		},
-		choiceText: "Rub your Voodoo Charm",
 		type: "item-voodoo-charm"
 	}
 ];

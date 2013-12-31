@@ -12,8 +12,42 @@ ocean, forest, chinese mountains
 //	items - items available in this theme
 //	tiles - the tiles available to draw [first, second, both]
 //	cards - the cards available to draw [first, second, both]
-
+/*,
+{
+	name: "forest",
+	header: "The trail still feels oddly alien after hundreds of expeditions. The familiar foliage rustles underfoot as you probe deeper.",
+	text: "",
+	choices: []
+}*/
 THEMES = [
+{
+	name: "forest", // lost, stalked
+	intro: {
+		header: "Familiar foliage rustles underfoot but you've lost the trail.",
+		text: [
+			"This part of the forest seems alien to you. The trees seem to shift around you and paths end as quickly as they begin. The sunlight pours dimly through the suffocating canopy. You can't help but think of the scary stories about travellers in the forest.",
+			"Deep breaths, I'm sure it picks up just around this corner. Your parents are expecting you for dinner and you musn't keep them waiting."
+			],
+		choices: [
+			"Consult your guidebook, the shared wisdom of explorers.",
+			"Stretch and prepare for the adventure ahead.",
+			"Sing a song to raise the spirits."
+		]
+	},
+	items: FOREST_ITEMS,
+	tiles: FOREST_TILES,
+	events: FOREST_EVENTS,
+	startMap: {
+		"0,0": {
+			name: "Covered Path",
+			type: "forest-start" // ending path
+		},
+		"1,0": {
+			name: "Foliage",
+			type: "foliage"
+		}
+	}
+},
 {
 	name: "ocean",
 	intro: {
@@ -39,12 +73,22 @@ THEMES = [
 		]
 	},
 	items: OCEAN_ITEMS,
-	tiles: OCEAN_TILES
-}/*,
-{
-	name: "forest",
-	header: "The trail still feels oddly alien after hundreds of expeditions. The familiar foliage rustles underfoot as you probe deeper.",
-	text: "",
-	choices: []
-}*/
+	tiles: OCEAN_TILES,
+	events: OCEAN_EVENTS,
+	startMap: {
+		"0,0": {
+			name: "Open Water",
+			type: "ocean-start"
+		},
+		"1,0": {
+			name: "Buoy",
+			type: "buoy"
+		},
+		"2,0": {
+			name: "Large Island",
+			type: "shore"//,
+			//transition: {board: 1, x: 0, y:0} //to land
+		}
+	}
+}
 ];

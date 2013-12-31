@@ -54,10 +54,10 @@ function GameCntl($scope, $timeout) {
 	// Values for the explorer character
 	// values from 1-5
 	$scope.character = {
-		knowledge: 2,
-		speed: 2,
-		courage: 2,
-		hand: [OCEAN_ITEMS[0], OCEAN_ITEMS[1]],
+		knowledge: 3,
+		speed: 3,
+		courage: 3,
+		hand: [],
 		board: 0,
 		position: {x: 0, y: 0}
 	};
@@ -68,41 +68,13 @@ function GameCntl($scope, $timeout) {
 	};
 
 	// Set the theme
-	$scope.theme = THEMES[rand(0,THEMES.length)];
+	$scope.theme = THEMES[0];//[rand(0,THEMES.length)];
 
 	// Initial map data
-	// TODO: make start tiles depend on theme
-	$scope.map = [{ // ocean
-		"0,0": {
-			name: "Open Water",
-			type: "start"
-		},
-		"1,0": {
-			name: "Buoy",
-			type: "buoy"
-		},
-		"2,0": {
-			name: "Large Island",
-			type: "shore",
-			transition: {board: 1, x: 0, y:0} //to land
-		}
-	},
-	{ // shore
-		"0,0": {
-			name: "Old Docks",
-			type: "docks",
-			transition: {board: 0, x: 2, y:0} //to ocean
-		}
-	}];
+	$scope.map = $scope.theme.startMap;
 	UNEXPLORED_TILE = {
 		type: "unexplored"
 	}
-
-	// Phobias and disabilities that help define our character
-	// TODO: rethink this mechanics
-	$scope.Flaws = [
-
-	];
 
 	/**
 	* HELPERS
@@ -165,7 +137,7 @@ function GameCntl($scope, $timeout) {
 			for (var xmod = -1; xmod < 2; xmod++) {
 				// Grab character position and board
 				var pos = (character.position.x+xmod)+","+(character.position.y+ymod);
-				var map = $scope.map[character.board];
+				var map = $scope.map;//[character.board];
 
 				// Update the corresponding tile
 				if (pos in map) {
@@ -246,17 +218,17 @@ function GameCntl($scope, $timeout) {
 					break;
 
 				// Move to another board
-				case 4:
+				/*case 4:
 					if (tile.transition) {
 						$scope.character.board = tile.transition.board;
 						$scope.character.position.x = tile.transition.x;
 						$scope.character.position.y = tile.transition.y;
 					}
-					break;
+					break;*/
 			}
 
 			// On arriving at the next tile
-			var currentBoard = $scope.map[$scope.character.board];
+			var currentBoard = $scope.map;//[$scope.character.board];
 			var position = $scope.character.position.x+","+$scope.character.position.y;
 			if (position in currentBoard) {
 				// Draw all the changes
@@ -264,9 +236,9 @@ function GameCntl($scope, $timeout) {
 			}
 			else {
 				// New tile
-				var tiles = $scope.theme.tiles[$scope.character.board];
+				var tiles = $scope.theme.tiles;//[$scope.character.board];
 				var newTile = tiles[rand(0,tiles.length)];
-				$scope.map[$scope.character.board][position] = newTile;
+				$scope.map[position]/*[$scope.character.board][position]*/ = newTile;
 
 				// Draw all the changes
 				$scope.redrawTiles();

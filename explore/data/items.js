@@ -1,3 +1,24 @@
+FOREST_ITEMS = [
+	{
+		name: "Compass",
+		header: "A comfort in a strange world, always pointing North.",
+		text: [
+			"It looks old, like someone left it here a long time ago. The needle is as keen as ever though.",
+			"When you get Lost, this can help you get your bearings again."
+		],
+		type: "item-compass"
+	},
+	{
+		name: "Locked Box",
+		header: "Who left it and what did they hide away?",
+		text: [
+			"A rusted iron lock holds this cold chest closed. The royal crest is painted on top in bright colours.",
+			"You could try to pick the lock. Otherwise it's a very handsome paperweight."
+		],
+		type: "item-locked-box"
+	}
+];
+
 /*
 compass, voodoo charm, sailor's charm,
 sailor's sword, sailor's cap, gold coin,

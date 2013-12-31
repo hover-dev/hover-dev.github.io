@@ -25,12 +25,12 @@ THEMES = [
 	intro: {
 		header: "Familiar foliage rustles underfoot but you've lost the trail.",
 		text: [
-			"This part of the forest seems alien to you. The trees seem to shift around you and paths end as quickly as they begin. The sunlight pours dimly through the suffocating canopy. You can't help but think of the scary stories about travellers in the forest.",
-			"Deep breaths, I'm sure it picks up just around this corner. Your parents are expecting you for dinner and you musn't keep them waiting."
+			"This part of the forest seems suddenly alien. The trees seem to shift around me and paths end as quickly as they begin. The sunlight pours dimly through the suffocating canopy. I can't help but think of the scary stories about travellers in the forest.",
+			"Deep breaths, I'm sure it picks up just around this corner. Mom and Dad are expecting me for dinner and I musn't keep them waiting."
 			],
 		choices: [
-			"Consult your guidebook, the shared wisdom of explorers.",
-			"Stretch and prepare for the adventure ahead.",
+			"Consult my guidebook, the shared wisdom of explorers.",
+			"Stretch and warm up for what's ahead.",
 			"Sing a song to raise the spirits."
 		]
 	},

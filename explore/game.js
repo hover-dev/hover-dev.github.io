@@ -54,9 +54,9 @@ function GameCntl($scope, $timeout) {
 	// Values for the explorer character
 	// values from 1-5
 	$scope.character = {
-		knowledge: 3,
-		speed: 3,
+		stamina: 3,
 		courage: 3,
+		knowledge: 3,
 		hand: [],
 		board: 0,
 		position: {x: 0, y: 0}
@@ -127,6 +127,13 @@ function GameCntl($scope, $timeout) {
 		hand.splice(index, 1);
 	}
 
+	// Draw a random event
+	$scope.drawEvent = function() {
+		var events = $scope.theme.events;
+		var card = events[rand(0,events.length)];
+		$scope.showCard(card);
+	};
+
 	// Redraw tiles on a given coordinate
 	$scope.redrawTiles = function() {
 		// Clear the tiles
@@ -159,13 +166,13 @@ function GameCntl($scope, $timeout) {
 		// Callback to draw cards for the tile
 		function resolve() {
 			for (var i = 0; i < $scope.tiles[4].events; i++) {
-
+				$scope.drawEvent();
 			}
 			for (var i = 0; i < $scope.tiles[4].fears; i++) {
 
 			}
 			for (var i = 0; i < $scope.tiles[4].items; i++) {
-				$scope.drawItem();
+				//$scope.drawItem();
 			}
 		}
 

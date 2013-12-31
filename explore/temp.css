@@ -50,7 +50,7 @@ body, html {
 	text-align: center;
 }
 
-/* Tile pictures */
+/* Ocean tile pictures */
 .start {
 	background-image: url(img/start.jpg);
 }
@@ -70,10 +70,27 @@ body, html {
 	background-image: url(img/start.jpg);
 }
 
+/* Forest tile pictures */
+.forest-start {
+	background-image: url(img/forest-start.png);
+}
+.foliage {
+	background-image: url(img/foliage.png);
+}
+.mushroom-circle {
+	background-image: url(img/mushroom-circle.png);
+}
+.old-cabin {
+	background-image: url(img/old-cabin.png);
+}
+
 /* Item pictures */
 .item-compass {
 	background-image: url(img/compass.jpg);
 }
 .item-voodoo-charm {
 	background-image: url(img/voodoo-charm.jpg);
+}
+.item-locked-box {
+	background-image: url(img/locked-box.png);
 }

@@ -1,7 +1,7 @@
 FOREST_ITEMS = [
 	{
 		name: "Compass",
-		header: "A comfort in a strange world, always pointing North.",
+		header: "A comfort in a strange world.",
 		text: [
 			"It looks old, like someone left it here a long time ago. The needle is as keen as ever though.",
 			"When you get Lost, this can help you get your bearings again."

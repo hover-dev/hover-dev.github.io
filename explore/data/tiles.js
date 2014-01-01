@@ -4,14 +4,14 @@ FOREST_TILES = [
 		events: 1,
 		fears: 0,
 		items: 1,
-		type: "mushroom-circle"
+		css: "mushroom-circle"
 	},
 	{
 		name: "Old Cabin",
 		events: 1,
 		fears: 0,
-		items: 0,
-		type: "old-cabin"
+		items: 1,
+		css: "old-cabin"
 	}
 ];
 
@@ -22,13 +22,13 @@ OCEAN_TILES = [
 		events: 1,
 		fears: 0,
 		items: 1,
-		type: "floating-crate"
+		css: "floating-crate"
 	},
 	{
 		name: "Choppy Waters",
 		events: 1,
 		fears: 0,
 		items: 0,
-		type: "choppy-waters"
+		css: "choppy-waters"
 	}
 ];

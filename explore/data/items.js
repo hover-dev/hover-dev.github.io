@@ -7,7 +7,7 @@ FOREST_ITEMS = [
 			"It looks old, like someone left it here a long time ago. The needle is as keen as ever though.",
 			"When you get Lost, this can help you get your bearings again."
 		],
-		type: "item-compass"
+		css: "item-compass"
 	},
 	{
 		type: "item",
@@ -17,7 +17,7 @@ FOREST_ITEMS = [
 			"A rusted iron lock holds this cold chest closed. The royal crest is painted on top in bright colours.",
 			"You could try to pick the lock. Otherwise it's a very handsome paperweight."
 		],
-		type: "item-locked-box"
+		css: "item-locked-box"
 	}
 ];
 
@@ -39,7 +39,7 @@ OCEAN_ITEMS = [
 			"Painted to look like a real, royal sailor's compass. It looks a bit worn but the needle is as keen as ever.",
 			"When you get Lost, this can help you get your bearings again and keep pushing forward."
 		],
-		type: "item-compass"
+		css: "item-compass"
 	},
 	{
 		type: "item",
@@ -48,7 +48,7 @@ OCEAN_ITEMS = [
 		text: [
 			"This "
 		],
-		type: "item-voodoo-charm"
+		css: "item-voodoo-charm"
 	}
 ];
 

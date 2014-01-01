@@ -7,7 +7,7 @@
 </div>
 <div class="hand">
 	<div class="card-container" ng-click="showCard(card)" ng-repeat="card in character.hand">
-		<div class="card" ng-class="card.type"></div>
+		<div class="card" ng-class="card.css"></div>
 		<div class="card-caption">
 			{{card.name}}
 		</div>
@@ -35,7 +35,7 @@
 			</div>
 
 			<div class="modal-footer" ng-show="popup.type == 'item'">
-				<button type="button" class="btn btn-danger" ng-click="dropItem(popup)" data-dismiss="modal">Drop</button>
+				<div><button type="button" class="btn btn-danger" ng-click="dropItem(popup)" data-dismiss="modal">Drop</button></div>
 				<button type="button" class="btn btn-default" data-dismiss="modal">Okay</button>
 			</div>
 

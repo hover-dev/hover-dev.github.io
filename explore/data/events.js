@@ -32,7 +32,7 @@ FOREST_EVENTS = [
 			attribute: 'stamina'
 		},
 		effects: [
-			[12,'courage',-1]
+			[10,'courage',-1]
 		]
 	},
 	{
@@ -53,8 +53,8 @@ FOREST_EVENTS = [
 			attribute: 'knowledge'
 		},
 		effects: [
-			[0,'stamina',-1]
-			[12,'stamina',1]
+			[0,'stamina',-1],
+			[10,'stamina',1]
 		]
 	}
 ];

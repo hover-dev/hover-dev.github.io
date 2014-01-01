@@ -40,11 +40,11 @@ THEMES = [
 	startMap: {
 		"0,0": {
 			name: "Covered Path",
-			type: "forest-start" // ending path
+			css: "forest-start" // ending path
 		},
 		"1,0": {
 			name: "Foliage",
-			type: "foliage"
+			css: "foliage"
 		}
 	}
 },
@@ -78,15 +78,15 @@ THEMES = [
 	startMap: {
 		"0,0": {
 			name: "Open Water",
-			type: "ocean-start"
+			css: "ocean-start"
 		},
 		"1,0": {
 			name: "Buoy",
-			type: "buoy"
+			css: "buoy"
 		},
 		"2,0": {
 			name: "Large Island",
-			type: "shore"//,
+			css: "shore"//,
 			//transition: {board: 1, x: 0, y:0} //to land
 		}
 	}

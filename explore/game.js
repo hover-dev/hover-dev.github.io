@@ -73,7 +73,7 @@ function GameCntl($scope, $timeout) {
 	// Initial map data
 	$scope.map = $scope.theme.startMap;
 	UNEXPLORED_TILE = {
-		type: "unexplored"
+		css: "unexplored"
 	}
 
 	/**
@@ -87,7 +87,8 @@ function GameCntl($scope, $timeout) {
 	// Get a tile's dynamic classes
 	$scope.getTileClass = function(tile) {
 		// Logic for classes
-		var classes = [tile.type];
+		return tile.css;
+		/*var classes = [tile.css];
 		if (tile.transition) classes.push('transition');
 
 		// Compile and return classes
@@ -95,7 +96,7 @@ function GameCntl($scope, $timeout) {
 		for (var x = 0; x < classes.length; x++) {
 			classString += classes[x]+' ';
 		}
-		return classString;
+		return classString;*/
 	};
 
 	// Popup for a given card
@@ -105,12 +106,11 @@ function GameCntl($scope, $timeout) {
 		// Reset the buttons
 		$('.risk').show();
 		$('.outcome').hide();
-		if (card.risk && !card.risk.optional) $('.continue').hide();
+		if (card.type != 'item' && card.risk && !card.risk.optional) $('.continue').hide();
 		
 		// Show the modal
 		$scope.popup = card;
 		$('#popup').modal("show");
-		$scope.$apply();
 	};
 
 	// Add a given card to the character's hand
@@ -122,8 +122,9 @@ function GameCntl($scope, $timeout) {
 	$scope.drawItem = function() {
 		var items = $scope.theme.items;
 		var card = items[rand(0,items.length)];
-		$scope.addCard(card);
-		$scope.showCard(card);
+		return card;
+		//$scope.addCard(card);
+		//$scope.showCard(card);
 	};
 
 	// Remove current item
@@ -138,7 +139,8 @@ function GameCntl($scope, $timeout) {
 	$scope.drawEvent = function() {
 		var events = $scope.theme.events;
 		var card = events[rand(0,events.length)];
-		$scope.showCard(card);
+		return card;
+		//$scope.showCard(card);
 	};
 
 	// Try your hand at a risk
@@ -151,13 +153,12 @@ function GameCntl($scope, $timeout) {
 		}
 		
 		// Check for the best effect we succeeded in getting
-		var succeeded = false; // TODO: THIS ISN'T DISPLAYING PROPERLY. check the chain down the line
+		var succeeded = false;
 		var effect = null;
-		var effects = card.risk.effects;
-		for (var n; n < effects.length; n++) {
-			var target = effects[n][0];
+		for (var n = 0; n < card.effects.length; n++) {
+			var target = card.effects[n][0];
 			if (target <= roll) {
-				effect = effects[n];
+				effect = card.effects[n];
 				// Effects with a 0 target number are not successes
 				if (target != 0) succeeded = true;
 			}
@@ -178,11 +179,6 @@ function GameCntl($scope, $timeout) {
 		$('.risk').hide();
 		$('.outcome').html('<p>Rolled '+roll+'.</p><p>'+succeeded+'</p>').show();
 		$('.continue').show();
-	}
-
-	// Resolve an effect from a card
-	function resolve(type, value) {
-
 	}
 
 	// Redraw tiles on a given coordinate
@@ -216,14 +212,22 @@ function GameCntl($scope, $timeout) {
 
 		// Callback to draw cards for the tile
 		function resolve() {
+			var draws = [];
 			for (var i = 0; i < $scope.tiles[4].events; i++) {
-				$scope.drawEvent();
+				//draws.push($scope.drawEvent());
 			}
 			for (var i = 0; i < $scope.tiles[4].fears; i++) {
 
 			}
 			for (var i = 0; i < $scope.tiles[4].items; i++) {
-				//$scope.drawItem();
+				draws.push($scope.drawItem());
+			}
+			for (var i = 0; i < draws.length; i++) {
+				if (draws[i].type == 'item') {
+					$scope.addCard(draws[i]);
+				}
+				$scope.showCard(draws[i]);
+				$scope.$apply();
 			}
 		}
 

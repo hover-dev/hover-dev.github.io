@@ -20,22 +20,31 @@
 
 
 <!-- Popup for items and events -->
-<div class="modal fade" id="popup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div data-backdrop="static" data-keyboard="false" class="modal fade" id="popup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" ng-click="update()" data-dismiss="modal" aria-hidden="true">&times;</button>
-				<h4 class="modal-title" id="myModalLabel">{{popup.name}}</h4>
-			</div>
+			<!--<div class="modal-header">
+				<h4 class="modal-title" id="myModalLabel" ng-show="popup.type == 'item'">Item</h4>
+				<h4 class="modal-title" id="myModalLabel" ng-show="popup.type == 'event'">Event</h4>
+			</div>-->
 			<div class="modal-body">
 				<h1>{{popup.header}}</h1>
 				<p ng-repeat="paragraph in popup.text">
 					{{paragraph}}
 				</p>
 			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-danger" ng-click="dropItem(popup)"data-dismiss="modal">Drop</button>
+
+			<div class="modal-footer" ng-show="popup.type == 'item'">
+				<button type="button" class="btn btn-danger" ng-click="dropItem(popup)" data-dismiss="modal">Drop</button>
+				<button type="button" class="btn btn-default" data-dismiss="modal">Okay</button>
 			</div>
+
+			<div class="modal-footer" ng-show="popup.type == 'event'">
+				<div class="risk" ng-show="popup.risk"><button type="button" ng-click="takeRisk(popup)" class="btn btn-primary">{{popup.risk.text[0]}}</button></div>
+				<div class="outcome"></div>
+				<button type="button" class="continue btn btn-default" data-dismiss="modal">Continue</button>
+			</div>
+
 		</div><!-- /.modal-content -->
 	</div><!-- /.modal-dialog -->
 </div><!-- /.modal -->

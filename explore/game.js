@@ -101,6 +101,13 @@ function GameCntl($scope, $timeout) {
 	// Popup for a given card
 	$scope.showCard = function(card) {
 		//gControlsLocked = false;
+
+		// Reset the buttons
+		$('.risk').show();
+		$('.outcome').hide();
+		if (card.risk && !card.risk.optional) $('.continue').hide();
+		
+		// Show the modal
 		$scope.popup = card;
 		$('#popup').modal("show");
 		$scope.$apply();
@@ -133,6 +140,50 @@ function GameCntl($scope, $timeout) {
 		var card = events[rand(0,events.length)];
 		$scope.showCard(card);
 	};
+
+	// Try your hand at a risk
+	$scope.takeRisk = function(card) {
+		// Roll the dice based on our appropriate attribute
+		var roll = 0;
+		var attribute = $scope.character[card.risk.attribute];
+		for (var i = 0; i < attribute; i++) {
+			roll += rand(0,6)+1;
+		}
+		
+		// Check for the best effect we succeeded in getting
+		var succeeded = false; // TODO: THIS ISN'T DISPLAYING PROPERLY. check the chain down the line
+		var effect = null;
+		var effects = card.risk.effects;
+		for (var n; n < effects.length; n++) {
+			var target = effects[n][0];
+			if (target <= roll) {
+				effect = effects[n];
+				// Effects with a 0 target number are not successes
+				if (target != 0) succeeded = true;
+			}
+		}
+
+		// Resolve the mechanical effect
+		// TODO: display the mechanical outcomes
+		if (effect) {
+			resolve(effect);
+		}
+
+		// Convert the success/failure into text
+		if (succeeded) 	succeeded = card.risk.text[1];
+		else 			succeeded = card.risk.text[2];
+
+		// Replace the risk with its outcome
+		// Also allow the player to continue
+		$('.risk').hide();
+		$('.outcome').html('<p>Rolled '+roll+'.</p><p>'+succeeded+'</p>').show();
+		$('.continue').show();
+	}
+
+	// Resolve an effect from a card
+	function resolve(type, value) {
+
+	}
 
 	// Redraw tiles on a given coordinate
 	$scope.redrawTiles = function() {

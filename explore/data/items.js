@@ -1,5 +1,6 @@
 FOREST_ITEMS = [
 	{
+		type: "item",
 		name: "Compass",
 		header: "A comfort in a strange world.",
 		text: [
@@ -9,6 +10,7 @@ FOREST_ITEMS = [
 		type: "item-compass"
 	},
 	{
+		type: "item",
 		name: "Locked Box",
 		header: "Who left it and what did they hide away?",
 		text: [
@@ -30,6 +32,7 @@ tribal mask, stone idol, boar tusk,
 */
 OCEAN_ITEMS = [
 	{
+		type: "item",
 		name: "Compass",
 		header: "A constant comfort in a strange world, always pointing North.",
 		text: [
@@ -39,6 +42,7 @@ OCEAN_ITEMS = [
 		type: "item-compass"
 	},
 	{
+		type: "item",
 		name: "Voodoo Charm",
 		header: "Crafted from strange feathers, ancient wood, and what you hope is paint...",
 		text: [
@@ -56,6 +60,7 @@ OCEAN_ITEMS = [
 
 ,
 	{
+		type: "item",
 		name: "",
 		header: "",
 		text: [

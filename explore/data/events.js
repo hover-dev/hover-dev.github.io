@@ -15,15 +15,16 @@ flowers and thorns
 */
 FOREST_EVENTS = [
 	{
+		type: "event",
 		name: 'Watched',
 		header: 'What was that?',
 		text: [
 			"I swear something followed me here. I can feel the gaze on the back of my neck, raising my hairs. Shadows dart in the corner of my eyes.",
 			"I think I can ditch them in the ravine ahead if I'm fast enough..."
 		],
-		test: {
+		risk: {
 			text: [ // choice, success, failure
-				"Run for it",
+				"Run for it (Stamina Medium)",
 				"Everything happens in a blur. On the other side everything is silent save for my pounding heart.",
 				"Something pushes me to the ground as I run. I don't feel the presence anymore but my hands won't stop shaking."
 			],
@@ -35,15 +36,16 @@ FOREST_EVENTS = [
 		]
 	},
 	{
+		type: "event",
 		name: 'River',
-		header: 'A rushing river blocks your path.',
+		header: 'A rushing river blocks my path.',
 		text: [
 			"I take a sip and the water is freezing. It's running pretty strong but there's a shallow part I could probably make my way across.",
 			"Of course, I don't have to. It's going to be a pretty long detour to reach a bridge though."
 		],
-		test: {
+		risk: {
 			text: [ // choice, success, failure
-				"Ford the river",
+				"Ford the river (Knowledge Medium)",
 				"I take off my shocks and shoes and carefully traverse the river. That wasn't too hard.",
 				"I jump from stone to stone and slip. I get to the other side, drenched and shivering."
 			],
@@ -62,6 +64,7 @@ OCEAN_EVENTS = [];
 /*
 ,
 	{
+		type: "event",
 		name: '',
 		header: '',
 		text: [

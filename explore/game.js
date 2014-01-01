@@ -143,6 +143,13 @@ function GameCntl($scope, $timeout) {
 		//$scope.showCard(card);
 	};
 
+	// Resolve the effects of a card
+	function resolve(effect) {
+		// Attribute effects
+		// Item effects (later)
+		// Status effects (later)
+	}
+
 	// Try your hand at a risk
 	$scope.takeRisk = function(card) {
 		// Roll the dice based on our appropriate attribute
@@ -212,9 +219,10 @@ function GameCntl($scope, $timeout) {
 
 		// Callback to draw cards for the tile
 		function resolve() {
+			// Collect the cards we're drawing
 			var draws = [];
 			for (var i = 0; i < $scope.tiles[4].events; i++) {
-				//draws.push($scope.drawEvent());
+				draws.push($scope.drawEvent());
 			}
 			for (var i = 0; i < $scope.tiles[4].fears; i++) {
 
@@ -222,12 +230,24 @@ function GameCntl($scope, $timeout) {
 			for (var i = 0; i < $scope.tiles[4].items; i++) {
 				draws.push($scope.drawItem());
 			}
-			for (var i = 0; i < draws.length; i++) {
+
+			// Make the next card in the queue open when a card closes
+			var i = 0;
+			$('#popup').on('hidden.bs.modal', function () {
+				nextCard();
+			});
+			nextCard();
+
+			console.log(draws);
+			function nextCard() {
+				console.log(i);
+				console.log(draws[i]);
 				if (draws[i].type == 'item') {
 					$scope.addCard(draws[i]);
 				}
 				$scope.showCard(draws[i]);
 				$scope.$apply();
+				i++;
 			}
 		}
 

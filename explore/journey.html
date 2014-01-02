@@ -40,6 +40,7 @@
 			</div>
 
 			<div class="modal-footer" ng-show="popup.type == 'event'">
+				<p class="risk">Stamina: {{character.stamina}}; Courage: {{character.courage}}; Knowledge: {{character.knowledge}}</p>
 				<div class="risk" ng-show="popup.risk"><button type="button" ng-click="takeRisk(popup)" class="btn btn-primary">{{popup.risk.text[0]}}</button></div>
 				<div class="outcome"></div>
 				<button type="button" class="continue btn btn-default" data-dismiss="modal">Continue</button>

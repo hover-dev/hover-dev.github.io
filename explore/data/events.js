@@ -32,7 +32,8 @@ FOREST_EVENTS = [
 			attribute: 'stamina'
 		},
 		effects: [
-			[10,'courage',-1]
+			[0,'courage',-1],
+			[10,'courage',0]
 		]
 	},
 	{

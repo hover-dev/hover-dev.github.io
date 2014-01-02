@@ -144,10 +144,32 @@ function GameCntl($scope, $timeout) {
 	};
 
 	// Resolve the effects of a card
-	function resolve() {
-		// Attribute effects
+	function resolve(effect) {
+		var NO_EFFECT = "";
+		if (effect === null) return NO_EFFECT;
+
+		// Define the changes we want to potentially make
+		function changeAttribute(attribute, value) {
+			$scope.character[attribute] += value;
+			if (value == 0) return NO_EFFECT;
+			attribute = attribute[0].toUpperCase() + attribute.slice(1); // Capitalize
+			return attribute+" "+(value>0?"+":"")+value;
+		}
 		// Item effects (later)
 		// Status effects (later)
+
+		// Determine which gets done
+		var type = effect[1];
+		var value = effect[2];
+		switch(type) {
+			case 'knowledge':
+			case 'courage':
+			case 'stamina':
+				return changeAttribute(type, value);
+			default:
+				return NO_EFFECT;
+
+		}
 	}
 
 	// Try your hand at a risk
@@ -164,7 +186,7 @@ function GameCntl($scope, $timeout) {
 		var effect = null;
 		for (var n = 0; n < card.effects.length; n++) {
 			var target = card.effects[n][0];
-			if (target <= roll) {
+			if (roll >= target) {
 				effect = card.effects[n];
 				// Effects with a 0 target number are not successes
 				if (target != 0) succeeded = true;
@@ -172,10 +194,7 @@ function GameCntl($scope, $timeout) {
 		}
 
 		// Resolve the mechanical effect
-		// TODO: display the mechanical outcomes
-		if (effect) {
-			resolve(effect);
-		}
+		var mechanics = resolve(effect);
 
 		// Convert the success/failure into text
 		if (succeeded) 	succeeded = card.risk.text[1];
@@ -184,7 +203,7 @@ function GameCntl($scope, $timeout) {
 		// Replace the risk with its outcome
 		// Also allow the player to continue
 		$('.risk').hide();
-		$('.outcome').html('<p>Rolled '+roll+'.</p><p>'+succeeded+'</p>').show();
+		$('.outcome').html('<p>Rolled '+roll+'.</p><p>'+succeeded+'</p><p>'+mechanics+'</p>').show();
 		$('.continue').show();
 	}
 
@@ -239,7 +258,6 @@ function GameCntl($scope, $timeout) {
 			nextCard();
 
 			function nextCard() {
-				console.log(i);
 				if (draws[i].type == 'item') {
 					$scope.addCard(draws[i]);
 				}
@@ -251,8 +269,6 @@ function GameCntl($scope, $timeout) {
 
 		// Flash tile to give us a chance to see it before we resolve effects
 		gControlsLocked = true;
-		console.log($scope.tiles[4].name);
-		console.log($('.tile')[4]);
 		var tile = $($('.tile')[4]);
 		tile.css('z-index','100');
 		tile.animate(
@@ -269,7 +285,7 @@ function GameCntl($scope, $timeout) {
 							drawCards();
 						}
 					);
-				}, 10);
+				}, 1000);
 			}
 		);
 	}

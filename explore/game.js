@@ -218,7 +218,7 @@ function GameCntl($scope, $timeout) {
 		$scope.tiles[4].isNew = false;
 
 		// Callback to draw cards for the tile
-		function resolve() {
+		function drawCards() {
 			// Collect the cards we're drawing
 			var draws = [];
 			for (var i = 0; i < $scope.tiles[4].events; i++) {
@@ -234,13 +234,12 @@ function GameCntl($scope, $timeout) {
 			// Make the next card in the queue open when a card closes
 			var i = 0;
 			$('#popup').on('hidden.bs.modal', function () {
-				nextCard();
+				if (draws[i]) nextCard();
 			});
 			nextCard();
 
 			function nextCard() {
 				console.log(i);
-				console.log(draws[i]);
 				if (draws[i].type == 'item') {
 					$scope.addCard(draws[i]);
 				}
@@ -252,6 +251,8 @@ function GameCntl($scope, $timeout) {
 
 		// Flash tile to give us a chance to see it before we resolve effects
 		gControlsLocked = true;
+		console.log($scope.tiles[4].name);
+		console.log($('.tile')[4]);
 		var tile = $($('.tile')[4]);
 		tile.css('z-index','100');
 		tile.animate(
@@ -265,13 +266,23 @@ function GameCntl($scope, $timeout) {
 						function() {
 							tile.css('z-index','0');
 							gControlsLocked = false;
-							resolve();
+							drawCards();
 						}
 					);
-				}, 1000);
+				}, 10);
 			}
 		);
 	}
+
+	// Discover new tiles when the tiles changes
+	$scope.$watch(
+		function() {
+			return $scope.tiles;
+		},
+		function() {
+			$scope.discoverNewTiles();
+		}
+	);
 
 	/**
 	* CONTROLS
@@ -328,10 +339,6 @@ function GameCntl($scope, $timeout) {
 				// Mark the new tile as such
 				$scope.tiles[4].isNew = true;
 			}
-
-			// Figure out the effects of the new tiles found
-			$scope.$apply();
-			$scope.discoverNewTiles();
 		}
 	}
 }

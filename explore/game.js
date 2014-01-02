@@ -144,7 +144,7 @@ function GameCntl($scope, $timeout) {
 	};
 
 	// Resolve the effects of a card
-	function resolve(effect) {
+	function resolve() {
 		// Attribute effects
 		// Item effects (later)
 		// Status effects (later)
@@ -210,7 +210,7 @@ function GameCntl($scope, $timeout) {
 			}
 		}
 	}
-	$scope.redrawTiles();
+	$scope.redrawTiles(); // First pass
 
 	// Animate a freshly revealed tile and draw its cards
 	$scope.discoverNewTiles = function() {
@@ -238,7 +238,6 @@ function GameCntl($scope, $timeout) {
 			});
 			nextCard();
 
-			console.log(draws);
 			function nextCard() {
 				console.log(i);
 				console.log(draws[i]);
@@ -312,12 +311,13 @@ function GameCntl($scope, $timeout) {
 			// On arriving at the next tile
 			var currentBoard = $scope.map;//[$scope.character.board];
 			var position = $scope.character.position.x+","+$scope.character.position.y;
+
+			// If visited before
 			if (position in currentBoard) {
-				// Draw all the changes
 				$scope.redrawTiles();
 			}
+			// If new tile
 			else {
-				// New tile
 				var tiles = $scope.theme.tiles;//[$scope.character.board];
 				var newTile = tiles[rand(0,tiles.length)];
 				$scope.map[position]/*[$scope.character.board][position]*/ = newTile;
@@ -329,6 +329,9 @@ function GameCntl($scope, $timeout) {
 				$scope.tiles[4].isNew = true;
 			}
 
+			// Figure out the effects of the new tiles found
+			$scope.$apply();
+			$scope.discoverNewTiles();
 		}
 	}
 }

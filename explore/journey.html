@@ -1,5 +1,5 @@
 <div class="map">
-	<div class="tile-container" ng-repeat="tile in tiles" ng-init="discoverNewTiles()">
+	<div class="tile-container" ng-repeat="tile in tiles">
 		<div class="tile" ng-class="getTileClass(tile)" ng-click="clickedTile($index, tile)">
 			{{tile.name}}
 		</div>

@@ -8,7 +8,7 @@ FOREST_ITEMS = [
 			"+1 Stamina for Risks."
 		],
 		effects: [
-			['stamina',1]
+			['bonus','stamina',1]
 		],
 		uses: null,
 		optionalUse: false,
@@ -24,7 +24,7 @@ FOREST_ITEMS = [
 			"-1 Speed for Risks, prevent up to 2 Stamina damage."
 		],
 		effects: [
-			['attribute','speed',-1],
+			['bonus','speed',-1],
 			['protect','stamina',1]
 		],
 		uses: 1,
@@ -40,7 +40,7 @@ FOREST_ITEMS = [
 			"3 Uses of +1 Stamina for Risks."
 		],
 		effects: [
-			['attribute','stamina',1]
+			['bonus','stamina',1]
 		],
 		uses: 3,
 		optionalUse: true,
@@ -57,7 +57,7 @@ FOREST_ITEMS = [
 		],
 		effects: [
 			['permanent','courage',-1],
-			['attribute','courage',3]
+			['bonus','courage',3]
 		],
 		uses: 3,
 		optionalUse: false,

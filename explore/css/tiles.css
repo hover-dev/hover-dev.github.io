@@ -1,0 +1,35 @@
+/* Any and all */
+.unexplored {
+	background-image: url(../img/unexplored.jpg);
+}
+
+/* Ocean */
+.start {
+	background-image: url(img/start.jpg);
+}
+.buoy {
+	background-image: url(img/buoy.jpg);
+}
+.shore {
+	background-image: url(img/shore.jpg);
+}
+.floating-crate {
+	background-image: url(img/start.jpg);
+}
+.choppy-waters {
+	background-image: url(img/start.jpg);
+}
+
+/* Forest */
+.forest-start {
+	background-image: url(../img/forest-start.png);
+}
+.foliage {
+	background-image: url(../img/foliage.png);
+}
+.mushroom-circle {
+	background-image: url(../img/mushroom-circle.png);
+}
+.old-cabin {
+	background-image: url(../img/old-cabin.png);
+}

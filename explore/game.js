@@ -54,10 +54,10 @@ function GameCntl($scope, $timeout) {
 	// Values for the explorer character
 	// values from 1-5
 	$scope.character = {
-		stamina: 3,
-		courage: 3,
-		knowledge: 3,
-		hand: [],
+		stamina: {base: 3, bonus: 0},
+		courage: {base: 3, bonus: 0},
+		knowledge: {base: 3, bonus: 0},
+		hand: [FOREST_ITEMS[0]],
 		board: 0,
 		position: {x: 0, y: 0}
 	};
@@ -75,6 +75,9 @@ function GameCntl($scope, $timeout) {
 	UNEXPLORED_TILE = {
 		css: "unexplored"
 	}
+
+	// Turn off Terror mode
+	$scope.terrorMode = false;
 
 	/**
 	* HELPERS
@@ -107,7 +110,7 @@ function GameCntl($scope, $timeout) {
 		$('.risk').show();
 		$('.outcome').hide();
 		if (card.type != 'item' && card.risk && !card.risk.optional) $('.continue').hide();
-		
+
 		// Show the modal
 		$scope.popup = card;
 		$('#popup').modal("show");
@@ -143,6 +146,41 @@ function GameCntl($scope, $timeout) {
 		//$scope.showCard(card);
 	};
 
+	// Return the bonuses we apply during risks
+	$scope.attributesString = "";
+	$scope.updateItemBonuses = function() {
+		// Reset bonuses
+		$scope.character.stamina.bonus = 0;
+		$scope.character.courage.bonus = 0;
+		$scope.character.knowledge.bonus = 0;
+
+		// Go through all the effects of all the items in our hand
+		var hand = $scope.character.hand;
+		for (var n = 0; n < hand.length; n++) {
+			for (var m = 0; m < hand[n].effects.length; m++) {
+				var effect = hand[n].effects[m];
+				// If it's a bonus, track it
+				if (effect[0] == 'bonus') {
+					$scope.character[effect[1]].bonus += effect[2];
+				}
+			}
+		}
+
+		// Update the readable string
+		var character = $scope.character;
+		var string = "";
+		var attribute = ['stamina', 'courage', 'knowledge'];
+		for (var i = 0; i < 3; i++) {
+			var bonus = character[attribute[i]].bonus;
+			string += attribute[i][0].toUpperCase() + attribute[i].slice(1) + ": ";
+			string += character[attribute[i]].base;
+			if (bonus != 0) string += (bonus>0?"+":"")+bonus;
+			if (i != 2) string += "; ";
+		}
+		$scope.attributesString = string;
+console.log(string);
+	}
+
 	// Resolve the effects of a card
 	function resolve(effect) {
 		var NO_EFFECT = "";
@@ -150,7 +188,7 @@ function GameCntl($scope, $timeout) {
 
 		// Define the changes we want to potentially make
 		function changeAttribute(attribute, value) {
-			$scope.character[attribute] += value;
+			$scope.character[attribute].base += value;
 			if (value == 0) return NO_EFFECT;
 			attribute = attribute[0].toUpperCase() + attribute.slice(1); // Capitalize
 			return (value>0?"+":"")+value+" "+attribute+".";
@@ -176,11 +214,14 @@ function GameCntl($scope, $timeout) {
 	$scope.takeRisk = function(card) {
 		// Roll the dice based on our appropriate attribute
 		var roll = 0;
+		console.log("start");
 		var attribute = $scope.character[card.risk.attribute];
+		attribute = attribute.base + attribute.bonus;
 		for (var i = 0; i < attribute; i++) {
 			roll += rand(0,6)+1;
 		}
-		
+		console.log(roll);
+
 		// Check for the best effect we succeeded in getting
 		var succeeded = false;
 		var effect = null;
@@ -290,13 +331,14 @@ function GameCntl($scope, $timeout) {
 		);
 	}
 
-	// Discover new tiles when the tiles changes
+	// Discover and update when we move and the tiles change
 	$scope.$watch(
 		function() {
 			return $scope.tiles;
 		},
 		function() {
 			$scope.discoverNewTiles();
+			$scope.updateItemBonuses();
 		}
 	);
 

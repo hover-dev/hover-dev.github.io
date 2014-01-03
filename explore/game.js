@@ -153,7 +153,7 @@ function GameCntl($scope, $timeout) {
 			$scope.character[attribute] += value;
 			if (value == 0) return NO_EFFECT;
 			attribute = attribute[0].toUpperCase() + attribute.slice(1); // Capitalize
-			return attribute+" "+(value>0?"+":"")+value;
+			return (value>0?"+":"")+value+" "+attribute+".";
 		}
 		// Item effects (later)
 		// Status effects (later)

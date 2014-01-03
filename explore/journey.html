@@ -28,7 +28,8 @@
 				<h4 class="modal-title" id="myModalLabel" ng-show="popup.type == 'event'">Event</h4>
 			</div>-->
 			<div class="modal-body">
-				<h1>{{popup.header}}</h1>
+				<h1>{{popup.name}}</h1>
+				<p><b>{{popup.header}}</b></p>
 				<p ng-repeat="paragraph in popup.text">
 					{{paragraph}}
 				</p>

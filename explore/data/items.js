@@ -19,7 +19,7 @@ FOREST_ITEMS = [
 		name: "Wooden Shield",
 		header: "Forgotten from a time long ago.",
 		text: [
-			"This might be able to protect me in a pinch. It's starting to come apart but it could probably still take a good blow.".
+			"This might be able to protect me in a pinch. It's starting to come apart but it could probably still take a good blow.",
 			"It's a bit heavy though.",
 			"-1 Speed for Risks, prevent up to 2 Stamina damage."
 		],
@@ -52,7 +52,7 @@ FOREST_ITEMS = [
 		header: "You've made a friend!",
 		text: [
 			"A small, delicate creature dances around my head, shimmering like crystal in the light.",
-			"I feel more courageous with her beside me! She wouldn't leave, right?"
+			"I feel more courageous with her beside me! She wouldn't leave, right?",
 			"3 Uses of +2 Courage for Risks, -1 Courage after."
 		],
 		effects: [

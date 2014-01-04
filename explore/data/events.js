@@ -1,5 +1,7 @@
 /*
-Target numbers planned from [attr]d6 and anydice.com
+Target numbers planned from [attr]d3 and anydice.com
+http://anydice.com/program/30fd
+
 trivial: 	4
 easy: 		6
 medium: 	8

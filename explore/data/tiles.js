@@ -3,7 +3,7 @@ FOREST_TILES = [
 		name: "Mushroom Circle",
 		events: 1,
 		fears: 0,
-		items: 0,
+		items: 1,
 		css: "mushroom-circle"
 	},
 	{

@@ -54,10 +54,10 @@ function GameCntl($scope, $timeout) {
 	// Values for the explorer character
 	// values from 1-5
 	$scope.character = {
-		stamina: {base: 3, bonus: 0},
-		courage: {base: 3, bonus: 0},
-		speed: {base: 3, bonus: 0},
-		hand: [FOREST_ITEMS[1]],
+		stamina: {base: 4, bonus: 0},
+		courage: {base: 4, bonus: 0},
+		speed: {base: 4, bonus: 0},
+		hand: [FOREST_ITEMS[2]],
 		board: 0,
 		position: {x: 0, y: 0}
 	};
@@ -160,8 +160,13 @@ function GameCntl($scope, $timeout) {
 			for (var m = 0; m < hand[n].effects.length; m++) {
 				var effect = hand[n].effects[m];
 				// If it's a bonus, track it
-				if (effect[0] == 'bonus') {
+				if (effect[0] == 'bonus' && hand[n].optionalUse !== true) {
 					$scope.character[effect[1]].bonus += effect[2];
+				}
+				else if (effect[0] == 'activePermanent') {
+				console.log("applying permanent");
+					$scope.character[effect[1]].base += effect[2];
+					effect[0] = 'appliedPermanent';
 				}
 			}
 		}
@@ -209,6 +214,16 @@ function GameCntl($scope, $timeout) {
 		}
 		array.unshift(-damage);
 		return array;
+	}
+
+	// When choosing not to drop an item, we choose to accept its permanent effects
+	$scope.makePermanent = function(card) {
+		for (var i = 0; i < card.effects.length; i++) {
+			if (card.effects[i][0] == 'permanent') {
+				console.log("activating permanent");
+				card.effects[i][0] = 'activePermanent';
+			}
+		}
 	}
 
 	// Resolve the effects of a card
@@ -262,7 +277,7 @@ function GameCntl($scope, $timeout) {
 		var roll = 0;
 		var attribute = $scope.character[card.risk.attribute].base + $scope.character[card.risk.attribute].bonus;
 		for (var i = 0; i < attribute; i++) {
-			roll += rand(0,6)+1;
+			roll += rand(0,3)+1;
 		}
 
 		// Check for the best effect we succeeded in getting
@@ -289,6 +304,24 @@ function GameCntl($scope, $timeout) {
 		$('.risk').hide();
 		$('.outcome').html('<p>Rolled '+roll+'.</p><p>'+succeeded+'</p><p>'+mechanics+'</p>').show();
 		$('.continue').show();
+	}
+
+	function reduceUses(card) {
+		card.uses -= 1;
+		if (card.uses <= 0) {
+			var hand = $scope.character.hand;
+			hand.splice(hand.indexOf(card),1);
+		}
+	}
+
+	$scope.useItem = function(card) {
+		// Sanity check that we can actually use this
+		if (card.optionalUse != true || card.uses == 0) return;
+		card.optionalUse = null; // set as used for this turn
+		reduceUses(card);
+
+		// Redo the bonuses now that the item is used
+		$scope.updateItemBonuses();
 	}
 
 	// Redraw tiles on a given coordinate
@@ -374,13 +407,31 @@ function GameCntl($scope, $timeout) {
 		);
 	}
 
+	$scope.resetItemUse = function() {
+		var hand = $scope.character.hand;
+		for (var i = 0; i < hand.length; i++) {
+			// Reset used items
+			if (hand[i].optionalUse === null) {
+				hand[i].optionalUse = true;
+			}
+			// Count down always-on items
+			if (hand[i].optionalUse === false && hand[i].uses >= 0) {
+				reduceUses(hand[i]);
+			}
+
+			// We reset bonuses directly after this
+		}
+	}
+
 	// Discover and update when we move and the tiles change
 	$scope.$watch(
 		function() {
 			return $scope.tiles;
 		},
 		function() {
+			// Essentially at the start of each round
 			$scope.discoverNewTiles();
+			$scope.resetItemUse();
 			$scope.updateItemBonuses();
 		}
 	);

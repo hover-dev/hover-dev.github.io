@@ -1,10 +1,10 @@
 /*
 Target numbers planned from [attr]d6 and anydice.com
 trivial: 	4
-easy: 		8
-medium: 	12
-hard: 		16
-unlikely: 	20
+easy: 		6
+medium: 	8
+hard: 		10
+unlikely: 	14
 */
 /*
 will-o-wisp
@@ -24,7 +24,7 @@ Base on the hero's journey, initiation phase
 */
 
 FOREST_EVENTS = [
-	/*{
+	{
 		type: "event",
 		name: 'Watching You',
 		header: 'What was that sound?',
@@ -43,9 +43,9 @@ FOREST_EVENTS = [
 		},
 		effects: [
 			[0,'courage',-1],
-			[10,'courage',0]
+			[8,'courage',0]
 		]
-	},*/
+	},
 	{
 		type: "event",
 		name: 'The River',
@@ -56,7 +56,7 @@ FOREST_EVENTS = [
 		],
 		risk: {
 			text: [ // choice, success, failure
-				"Ford the river (Speed Medium)",
+				"Ford the river (Speed Hard)",
 				"I take off my shocks and shoes and carefully traverse the river. That wasn't too hard.",
 				"I jump from stone to stone and slip. I get to the other side, drenched and shivering."
 			],

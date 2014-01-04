@@ -47,7 +47,7 @@ FOREST_ITEMS = [
 		uses: 3,
 		useText: "",
 		optionalUse: true,
-		useText: "",
+		useText: "Nibble my mushroom (+1 Stamina)",
 		css: "item-big-mushroom"
 	},
 	{
@@ -57,13 +57,13 @@ FOREST_ITEMS = [
 		text: [
 			"A small, delicate creature dances around my head, shimmering like crystal in the light.",
 			"I feel more courageous with her beside me! She wouldn't leave, right?",
-			"3 Uses of +2 Courage for Risks, -1 Courage after."
+			"3 Uses of +3 Courage for Risks, -1 Courage permanently."
 		],
 		effects: [
 			['permanent','courage',-1],
 			['bonus','courage',3]
 		],
-		uses: 3,
+		uses: 5,
 		useText: "",
 		optionalUse: false,
 		css: "item-peppy-sprite"
@@ -150,9 +150,14 @@ OCEAN_ITEMS = [
 		],
 		uses: null,
 		useText: "",
-		optionalUse: false,
+		optionalUse: null,
 		take: function() {},
 		use: function() {}
 	}
+
+
+	during play, optionalUse goes "null" when it has been used that turn
+
+	BUG WORKAROUND: always-on use items get used 2 turns faster than I want. Rather than mess up code to fix it, just add 2 use
 
 */

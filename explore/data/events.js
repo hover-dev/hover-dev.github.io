@@ -12,6 +12,17 @@ bridge
 flowers and thorns
 
 */
+
+/*
+Base on the hero's journey, initiation phase
+2.2.1 The Road of Trials
+2.2.2 The Meeting With the Goddess
+2.2.3 Woman as Temptress
+2.2.4 Atonement with the Father
+2.2.5 Apotheosis
+2.2.6 The Ultimate Boon
+*/
+
 FOREST_EVENTS = [
 	/*{
 		type: "event",

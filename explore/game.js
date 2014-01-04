@@ -192,17 +192,18 @@ function GameCntl($scope, $timeout) {
 				var effect = effects[m];
 				// If it's the right protection, track it
 				if (effect[0] == 'protect' && effect[1] == attribute) {
-					// Soak the damage and break the item
+					// Soak the damage
 					damage -= effect[2];
 					array.push($scope.character.hand[n].useText);
+
+					// Break the item
+					$scope.character.hand.splice(n,1);
+
 					// When we've protected it all, stop trying
 					if (damage <= 0) {
 						m = effects.length+1;
 						n = hand.length+1;
 					}
-
-					// Break the item when we've used it
-					$scope.character.hand.splice(n,1);
 				}
 			}
 		}

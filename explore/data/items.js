@@ -11,6 +11,7 @@ FOREST_ITEMS = [
 			['bonus','stamina',1]
 		],
 		uses: null,
+		useText: "",
 		optionalUse: false,
 		css: "item-walking-stick"
 	},
@@ -28,7 +29,8 @@ FOREST_ITEMS = [
 			['protect','stamina',1]
 		],
 		uses: 1,
-		optionalUse: false,
+		useText: "My shield breaks apart, absorbing 1 Stamina damage.",
+		optionalUse: false, // protect and bonus effects currently can not be optional
 		css: "item-wooden-shield"
 	},
 	{
@@ -43,7 +45,9 @@ FOREST_ITEMS = [
 			['bonus','stamina',1]
 		],
 		uses: 3,
+		useText: "",
 		optionalUse: true,
+		useText: "",
 		css: "item-big-mushroom"
 	},
 	{
@@ -60,6 +64,7 @@ FOREST_ITEMS = [
 			['bonus','courage',3]
 		],
 		uses: 3,
+		useText: "",
 		optionalUse: false,
 		css: "item-peppy-sprite"
 	}
@@ -144,6 +149,7 @@ OCEAN_ITEMS = [
 			["stamina",-1]
 		],
 		uses: null,
+		useText: "",
 		optionalUse: false,
 		take: function() {},
 		use: function() {}

@@ -56,8 +56,8 @@ function GameCntl($scope, $timeout) {
 	$scope.character = {
 		stamina: {base: 3, bonus: 0},
 		courage: {base: 3, bonus: 0},
-		knowledge: {base: 3, bonus: 0},
-		hand: [FOREST_ITEMS[0]],
+		speed: {base: 3, bonus: 0},
+		hand: [FOREST_ITEMS[1]],
 		board: 0,
 		position: {x: 0, y: 0}
 	};
@@ -152,7 +152,7 @@ function GameCntl($scope, $timeout) {
 		// Reset bonuses
 		$scope.character.stamina.bonus = 0;
 		$scope.character.courage.bonus = 0;
-		$scope.character.knowledge.bonus = 0;
+		$scope.character.speed.bonus = 0;
 
 		// Go through all the effects of all the items in our hand
 		var hand = $scope.character.hand;
@@ -169,7 +169,7 @@ function GameCntl($scope, $timeout) {
 		// Update the readable string
 		var character = $scope.character;
 		var string = "";
-		var attribute = ['stamina', 'courage', 'knowledge'];
+		var attribute = ['stamina', 'courage', 'speed'];
 		for (var i = 0; i < 3; i++) {
 			var bonus = character[attribute[i]].bonus;
 			string += attribute[i][0].toUpperCase() + attribute[i].slice(1) + ": ";
@@ -178,7 +178,36 @@ function GameCntl($scope, $timeout) {
 			if (i != 2) string += "; ";
 		}
 		$scope.attributesString = string;
-console.log(string);
+	}
+
+	// Apply any protection we might have to prevent damage
+	function applyProtection(attribute, damage) {
+		if (damage <= 0) return null;
+		var array = []; // Return [remainingDamage, itemUseText, ...]
+		// Go through all the appropriate protection of all the items in our hand
+		var hand = $scope.character.hand;
+		for (var n = 0; n < hand.length; n++) {
+			var effects = hand[n].effects;
+			for (var m = 0; m < effects.length; m++) {
+				var effect = effects[m];
+				// If it's the right protection, track it
+				if (effect[0] == 'protect' && effect[1] == attribute) {
+					// Soak the damage and break the item
+					damage -= effect[2];
+					array.push($scope.character.hand[n].useText);
+					// When we've protected it all, stop trying
+					if (damage <= 0) {
+						m = effects.length+1;
+						n = hand.length+1;
+					}
+
+					// Break the item when we've used it
+					$scope.character.hand.splice(n,1);
+				}
+			}
+		}
+		array.unshift(-damage);
+		return array;
 	}
 
 	// Resolve the effects of a card
@@ -188,10 +217,26 @@ console.log(string);
 
 		// Define the changes we want to potentially make
 		function changeAttribute(attribute, value) {
-			$scope.character[attribute].base += value;
 			if (value == 0) return NO_EFFECT;
-			attribute = attribute[0].toUpperCase() + attribute.slice(1); // Capitalize
-			return (value>0?"+":"")+value+" "+attribute+".";
+			var string = "";
+
+			// If it's damage, see if we have something to block it
+			var protectionArray = applyProtection(attribute, -value);
+			if (protectionArray != null) {
+				value = protectionArray[0];
+				for (var i = 1; i < protectionArray.length; i++) {
+					string += protectionArray[i] + " ";
+				}
+			}
+
+			// Change the attribute value if there's any damage left.
+			if (value == 0) return string;
+			else {
+				$scope.character[attribute].base += value;
+				attribute = attribute[0].toUpperCase() + attribute.slice(1); // Capitalize
+				string += (value>0?"+":"")+value+" "+attribute+".";
+			}
+			return string;
 		}
 		// Item effects (later)
 		// Status effects (later)
@@ -200,7 +245,7 @@ console.log(string);
 		var type = effect[1];
 		var value = effect[2];
 		switch(type) {
-			case 'knowledge':
+			case 'speed':
 			case 'courage':
 			case 'stamina':
 				return changeAttribute(type, value);
@@ -214,13 +259,10 @@ console.log(string);
 	$scope.takeRisk = function(card) {
 		// Roll the dice based on our appropriate attribute
 		var roll = 0;
-		console.log("start");
-		var attribute = $scope.character[card.risk.attribute];
-		attribute = attribute.base + attribute.bonus;
+		var attribute = $scope.character[card.risk.attribute].base + $scope.character[card.risk.attribute].bonus;
 		for (var i = 0; i < attribute; i++) {
 			roll += rand(0,6)+1;
 		}
-		console.log(roll);
 
 		// Check for the best effect we succeeded in getting
 		var succeeded = false;

@@ -11,10 +11,9 @@ will-o-wisp
 bridge
 flowers and thorns
 
--knowledge would be something so alien that it puts you in a new paradigm
 */
 FOREST_EVENTS = [
-	{
+	/*{
 		type: "event",
 		name: 'Watching You',
 		header: 'What was that sound?',
@@ -35,7 +34,7 @@ FOREST_EVENTS = [
 			[0,'courage',-1],
 			[10,'courage',0]
 		]
-	},
+	},*/
 	{
 		type: "event",
 		name: 'The River',
@@ -46,12 +45,12 @@ FOREST_EVENTS = [
 		],
 		risk: {
 			text: [ // choice, success, failure
-				"Ford the river (Knowledge Medium)",
+				"Ford the river (Speed Medium)",
 				"I take off my shocks and shoes and carefully traverse the river. That wasn't too hard.",
 				"I jump from stone to stone and slip. I get to the other side, drenched and shivering."
 			],
 			optional: true,
-			attribute: 'knowledge'
+			attribute: 'speed'
 		},
 		effects: [
 			[0,'stamina',-1],

@@ -35,6 +35,11 @@
 				</p>
 			</div>
 
+			<div class="modal-footer" ng-show="popup.type == 'fear'">
+				<p ng-show="fearsLeft == 1">The shadows feels darker.</p>
+				<button type="button" class="btn btn-default" data-dismiss="modal">Okay...</button>
+			</div>
+
 			<div class="modal-footer" ng-show="popup.type == 'item'">
 				<div><button type="button" class="btn btn-danger" ng-click="dropItem(popup)" data-dismiss="modal">Drop</button></div>
 				<button type="button" class="btn btn-default" ng-click="makePermanent(popup)" data-dismiss="modal">Okay</button>
@@ -44,7 +49,7 @@
 				<p class="risk small">{{attributesString}}</p>
 				<div class="risk" ng-show="popup.risk"><button type="button" ng-click="takeRisk(popup)" class="btn btn-primary">{{popup.risk.text[0]}}</button></div>
 				<div class="risk" ng-repeat="card in character.hand">
-					<button type="button" ng-show="card.optionalUse === true" ng-click="useItem(card)" class="btn btn-primary">{{card.useText}}</button>
+					<button type="button" ng-show="card.optionalUse === true && card.uses > 0" ng-click="useItem(card)" class="btn btn-primary">{{card.useText}}</button>
 				</div>
 				<div class="outcome"></div>
 				<button type="button" class="continue btn btn-default" data-dismiss="modal">Continue</button>

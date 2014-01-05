@@ -57,7 +57,7 @@ function GameCntl($scope, $timeout) {
 		stamina: {base: 4, bonus: 0},
 		courage: {base: 4, bonus: 0},
 		speed: {base: 4, bonus: 0},
-		hand: [FOREST_ITEMS[2]],
+		hand: [],
 		board: 0,
 		position: {x: 0, y: 0}
 	};
@@ -76,8 +76,9 @@ function GameCntl($scope, $timeout) {
 		css: "unexplored"
 	}
 
-	// Turn off Terror mode
-	$scope.terrorMode = false;
+	// Fear/Terror related counters
+	$scope.fearsLeft = 2;//4+rand(0,3);
+	$scope.terror = null;
 
 	/**
 	* HELPERS
@@ -120,6 +121,15 @@ function GameCntl($scope, $timeout) {
 	$scope.addCard = function(card) {
 		$scope.character.hand.push(card);
 	}
+
+	// Draw a random Fear
+	$scope.drawFear = function() {
+		var fears = $scope.theme.fears;
+		var card = fears[rand(0,fears.length)];
+		$scope.fearsLeft -= 1;
+		$scope.terror = $scope.theme.terrors[card.terrorIndex];
+		return card;
+	};
 
 	// Draw a random item
 	$scope.drawItem = function() {
@@ -201,8 +211,10 @@ function GameCntl($scope, $timeout) {
 					damage -= effect[2];
 					array.push($scope.character.hand[n].useText);
 
-					// Break the item
-					$scope.character.hand.splice(n,1);
+					// Break the item unless it's a Fear
+					if (hand[n].type == 'item') {
+						$scope.character.hand.splice(n,1);
+					}
 
 					// When we've protected it all, stop trying
 					if (damage <= 0) {
@@ -310,7 +322,9 @@ function GameCntl($scope, $timeout) {
 		card.uses -= 1;
 		if (card.uses <= 0) {
 			var hand = $scope.character.hand;
-			hand.splice(hand.indexOf(card),1);
+			if (card.type == 'item') { // Don't remove Fears
+				hand.splice(hand.indexOf(card),1);
+			}
 		}
 	}
 
@@ -361,10 +375,14 @@ function GameCntl($scope, $timeout) {
 				draws.push($scope.drawEvent());
 			}
 			for (var i = 0; i < $scope.tiles[4].fears; i++) {
-
+				draws.push($scope.drawFear());
 			}
 			for (var i = 0; i < $scope.tiles[4].items; i++) {
 				draws.push($scope.drawItem());
+			}
+			if (scope.fearsLeft <= 0) {
+				// draws.push($scope.startTerror()); 
+				// Remember, you can die now!
 			}
 
 			// Make the next card in the queue open when a card closes
@@ -375,7 +393,7 @@ function GameCntl($scope, $timeout) {
 			nextCard();
 
 			function nextCard() {
-				if (draws[i].type == 'item') {
+				if (draws[i].type == 'item' || draws[i].type == 'fear') {
 					$scope.addCard(draws[i]);
 				}
 				$scope.showCard(draws[i]);

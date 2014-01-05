@@ -37,6 +37,8 @@ THEMES = [
 	items: FOREST_ITEMS,
 	tiles: FOREST_TILES,
 	events: FOREST_EVENTS,
+	fears: FOREST_FEARS,
+	terrors: FOREST_TERRORS,
 	startMap: {
 		"0,0": {
 			name: "Covered Path",

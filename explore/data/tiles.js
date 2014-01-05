@@ -9,7 +9,7 @@ FOREST_TILES = [
 	{
 		name: "Old Cabin",
 		events: 1,
-		fears: 0,
+		fears: 1,
 		items: 0,
 		css: "old-cabin"
 	}

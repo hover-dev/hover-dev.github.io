@@ -28,7 +28,7 @@ FOREST_ITEMS = [
 			['bonus','speed',-1],
 			['protect','stamina',1]
 		],
-		uses: 1,
+		uses: 1, // BUG: All protect items are 1 use
 		useText: "My shield breaks apart, absorbing 1 Stamina damage.",
 		optionalUse: false, // protect and bonus effects currently can not be optional
 		css: "item-wooden-shield"

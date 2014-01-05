@@ -30,7 +30,8 @@ function GameCntl($scope, $timeout) {
 		MENU: "menu.html",			// Pre-game
 		ARRIVE: "map.html",			// Finding the map
 		EXPLORE: "journey.html",	// The path there
-		LEAVE: "start.html"		// Kicking off your journey
+		LEAVE: "start.html",		// Kicking off your journey
+		EPILOGUE: "epilogue.html"	// Wrap up the journey
 	};
 	$scope.state = $scope.States.EXPLORE;
 
@@ -40,6 +41,9 @@ function GameCntl($scope, $timeout) {
 	};
 	$scope.startExploring = function() {
 		$scope.state = $scope.States.EXPLORE;
+	};
+	$scope.endGame = function() {
+		$scope.state = $scope.States.EPILOGUE;
 	};
 	$scope.stateChanged = function() {
 		if ($scope.state === $scope.States.EXPLORE) {
@@ -57,7 +61,7 @@ function GameCntl($scope, $timeout) {
 		stamina: {base: 4, bonus: 0},
 		courage: {base: 4, bonus: 0},
 		speed: {base: 4, bonus: 0},
-		hand: [],
+		hand: [FOREST_ITEMS[0]],
 		board: 0,
 		position: {x: 0, y: 0}
 	};
@@ -77,8 +81,9 @@ function GameCntl($scope, $timeout) {
 	}
 
 	// Fear/Terror related counters
-	$scope.fearsLeft = 2;//4+rand(0,3);
+	$scope.fearsLeft = -2;//4+rand(0,3);
 	$scope.terror = null;
+	$scope.overcameTerror = null;
 
 	/**
 	* HELPERS
@@ -115,6 +120,7 @@ function GameCntl($scope, $timeout) {
 		// Show the modal
 		$scope.popup = card;
 		$('#popup').modal("show");
+		$('#popup').scrollTop(0);
 	};
 
 	// Add a given card to the character's hand
@@ -126,7 +132,7 @@ function GameCntl($scope, $timeout) {
 	$scope.drawFear = function() {
 		var fears = $scope.theme.fears;
 		var card = fears[rand(0,fears.length)];
-		$scope.fearsLeft -= 1;
+		if ($scope.fearsLeft > 0) $scope.fearsLeft -= 1;
 		$scope.terror = $scope.theme.terrors[card.terrorIndex];
 		return card;
 	};
@@ -174,7 +180,6 @@ function GameCntl($scope, $timeout) {
 					$scope.character[effect[1]].bonus += effect[2];
 				}
 				else if (effect[0] == 'activePermanent') {
-				console.log("applying permanent");
 					$scope.character[effect[1]].base += effect[2];
 					effect[0] = 'appliedPermanent';
 				}
@@ -197,6 +202,7 @@ function GameCntl($scope, $timeout) {
 
 	// Apply any protection we might have to prevent damage
 	function applyProtection(attribute, damage) {
+		console.log("damage: "+damage);
 		if (damage <= 0) return null;
 		var array = []; // Return [remainingDamage, itemUseText, ...]
 		// Go through all the appropriate protection of all the items in our hand
@@ -209,6 +215,7 @@ function GameCntl($scope, $timeout) {
 				if (effect[0] == 'protect' && effect[1] == attribute) {
 					// Soak the damage
 					damage -= effect[2];
+					console.log("after absorbing: "+damage);
 					array.push($scope.character.hand[n].useText);
 
 					// Break the item unless it's a Fear
@@ -232,7 +239,6 @@ function GameCntl($scope, $timeout) {
 	$scope.makePermanent = function(card) {
 		for (var i = 0; i < card.effects.length; i++) {
 			if (card.effects[i][0] == 'permanent') {
-				console.log("activating permanent");
 				card.effects[i][0] = 'activePermanent';
 			}
 		}
@@ -261,6 +267,7 @@ function GameCntl($scope, $timeout) {
 			if (value == 0) return string;
 			else {
 				$scope.character[attribute].base += value;
+				if ($scope.character[attribute].base < 0) $scope.character[attribute].base = 0;
 				attribute = attribute[0].toUpperCase() + attribute.slice(1); // Capitalize
 				string += (value>0?"+":"")+value+" "+attribute+".";
 			}
@@ -318,6 +325,41 @@ function GameCntl($scope, $timeout) {
 		$('.continue').show();
 	}
 
+	// Assess the final Terror Risk
+	$scope.finalRisk = function(attribute) {
+		// Roll the dice based on our appropriate attribute
+		var roll = 0;
+		var attributeValue = $scope.character[attribute].base + $scope.character[attribute].bonus;
+		for (var i = 0; i < attributeValue; i++) {
+			roll += rand(0,3)+1;
+		}
+
+		// Check for the best effect we succeeded in getting
+		var event = $scope.terror.event;
+		var target = event.target
+		$scope.overcameTerror = (roll >= target);
+
+		// Convert the success/failure into text
+		var outcome = ($scope.overcameTerror ? 1 : 2);
+		switch(attribute) {
+			case 'stamina':
+				outcome = event.staminaRisk[outcome];
+				break;
+			case 'speed':
+				outcome = event.speedRisk[outcome];
+				break;
+			case 'courage':
+				outcome = event.courageRisk[outcome];
+				break;
+		}
+
+		// Replace the risk with its outcome
+		// Also allow the player to continue
+		$('.risk').hide();
+		$('.outcome').html('<p>Rolled '+roll+'.</p><p>'+outcome+'</p>').show();
+		$('.continue').show();
+	}
+
 	function reduceUses(card) {
 		card.uses -= 1;
 		if (card.uses <= 0) {
@@ -371,6 +413,7 @@ function GameCntl($scope, $timeout) {
 		function drawCards() {
 			// Collect the cards we're drawing
 			var draws = [];
+			if ($scope.fearsLeft <= 0) $scope.fearsLeft -= 1;
 			for (var i = 0; i < $scope.tiles[4].events; i++) {
 				draws.push($scope.drawEvent());
 			}
@@ -380,9 +423,11 @@ function GameCntl($scope, $timeout) {
 			for (var i = 0; i < $scope.tiles[4].items; i++) {
 				draws.push($scope.drawItem());
 			}
-			if (scope.fearsLeft <= 0) {
-				// draws.push($scope.startTerror()); 
-				// Remember, you can die now!
+			if ($scope.fearsLeft == 0) {
+				draws.push($scope.terror);
+			}
+			if ($scope.fearsLeft == -3) {
+				draws.push($scope.terror.event);
 			}
 
 			// Make the next card in the queue open when a card closes
@@ -395,6 +440,9 @@ function GameCntl($scope, $timeout) {
 			function nextCard() {
 				if (draws[i].type == 'item' || draws[i].type == 'fear') {
 					$scope.addCard(draws[i]);
+				}
+				if (draws[i].type == 'terror') {
+					$('.continue').hide();
 				}
 				$scope.showCard(draws[i]);
 				$scope.$apply();

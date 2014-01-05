@@ -27,7 +27,7 @@
 				<h4 class="modal-title" id="myModalLabel" ng-show="popup.type == 'item'">Item</h4>
 				<h4 class="modal-title" id="myModalLabel" ng-show="popup.type == 'event'">Event</h4>
 			</div>-->
-			<div class="modal-body">
+			<div class="modal-body" ng-show="popup.type != 'terrorIntro'">
 				<h1>{{popup.name}}</h1>
 				<p><b>{{popup.header}}</b></p>
 				<p ng-repeat="paragraph in popup.text">
@@ -35,8 +35,12 @@
 				</p>
 			</div>
 
-			<div class="modal-footer" ng-show="popup.type == 'fear'">
-				<p ng-show="fearsLeft == 1">The shadows feels darker.</p>
+			<div class="modal-body" ng-show="popup.type == 'terrorIntro'">
+				<p>{{popup.intro}}</p>
+			</div>
+
+			<div class="modal-footer" ng-show="popup.type == 'fear' || popup.type == 'terrorIntro'">
+				<p ng-show="fearsLeft == 1">The shadows feel darker.</p>
 				<button type="button" class="btn btn-default" data-dismiss="modal">Okay...</button>
 			</div>
 
@@ -52,7 +56,20 @@
 					<button type="button" ng-show="card.optionalUse === true && card.uses > 0" ng-click="useItem(card)" class="btn btn-primary">{{card.useText}}</button>
 				</div>
 				<div class="outcome"></div>
+				<p ng-show="fearsLeft < 0">{{terror.warnings[(-fearsLeft)-1]}}</p>
 				<button type="button" class="continue btn btn-default" data-dismiss="modal">Continue</button>
+			</div>
+
+			<div class="modal-footer" ng-show="popup.type == 'terror'">
+				<p class="risk small">{{attributesString}}</p>
+				<div class="risk" ng-show="popup.risk"><button type="button" ng-click="finalRisk('stamina')" class="btn btn-info">{{popup.staminaRisk[0]}}</button></div>
+				<div class="risk" ng-show="popup.risk"><button type="button" ng-click="finalRisk('speed')" class="btn btn-info">{{popup.speedRisk[0]}}</button></div>
+				<div class="risk" ng-show="popup.risk"><button type="button" ng-click="finalRisk('courage')" class="btn btn-info">{{popup.courageRisk[0]}}</button></div>
+				<div class="risk" ng-repeat="card in character.hand">
+					<button type="button" ng-show="card.optionalUse === true && card.uses > 0" ng-click="useItem(card)" class="btn btn-primary">{{card.useText}}</button>
+				</div>
+				<div class="outcome"></div>
+				<button type="button" class="continue btn btn-default" ng-click="endGame()" data-dismiss="modal">Continue</button>
 			</div>
 
 		</div><!-- /.modal-content -->

@@ -2,11 +2,12 @@ body, html {
 	height: 100%;
 }
 
-.modal-footer div {
+.modal-footer div,
+.margin10b {
 	margin-bottom: 10px;
 }
 
-#popup h1 {
+body h1 {
 	font-size: 2em;
 }
 

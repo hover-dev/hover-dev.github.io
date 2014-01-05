@@ -29,7 +29,7 @@ THEMES = [
 			"Deep breaths, I'm sure it picks up just around this corner. Mom and Dad are expecting me for dinner and I musn't keep them waiting."
 			],
 		choices: [
-			"Consult my guidebook, the shared wisdom of explorers.",
+			"Start tearing through the brush.",
 			"Stretch and warm up for what's ahead.",
 			"Sing a song to raise the spirits."
 		]

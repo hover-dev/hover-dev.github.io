@@ -33,11 +33,11 @@ function GameCntl($scope, $timeout) {
 		PAUSE: "pause.html",		// In-game menu (UNUSED)
 		OUTRO: "outro.html"			// Wrap up the journey, epilogue
 	};
-	$scope.state = $scope.States.EXPLORE;
+	$scope.state = $scope.States.MENU;
 
 	// Functions to change the game state
 	$scope.newGame = function() {
-		$scope.state = $scope.States.ARRIVE;
+		$scope.state = $scope.States.INTRO;
 	};
 	$scope.startExploring = function() {
 		$scope.state = $scope.States.EXPLORE;
@@ -70,7 +70,7 @@ function GameCntl($scope, $timeout) {
 		position: {x: 0, y: 0}
 	};
 	$scope.pickTrait = function(name) {
-		$scope.character[name] += 1;
+		$scope.character[name].base += 1;
 		$scope.startExploring();
 		$scope.drawItem();
 	};
@@ -85,7 +85,7 @@ function GameCntl($scope, $timeout) {
 	}
 
 	// Fear/Terror related counters
-	$scope.fearsLeft = -2;//=4+rand(0,3);
+	$scope.fearsLeft = 4+rand(0,3);
 	$scope.terror = null;
 	$scope.overcameTerror = null;
 
@@ -245,6 +245,7 @@ function GameCntl($scope, $timeout) {
 
 	// When choosing not to drop an item, we choose to accept its permanent effects
 	$scope.makePermanent = function(card) {
+		if (card.effects === undefined) return;
 		for (var i = 0; i < card.effects.length; i++) {
 			if (card.effects[i][0] == 'permanent') {
 				card.effects[i][0] = 'activePermanent';

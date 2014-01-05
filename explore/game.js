@@ -43,9 +43,10 @@ function GameCntl($scope, $timeout) {
 		$scope.state = $scope.States.EXPLORE;
 	};
 	$scope.endGame = function() {
-		$scope.state = $scope.States.EPILOGUE;
+		$scope.state = $scope.States.OUTRO;
 	};
 	$scope.restart = function() {
+		$('#popup').modal("hide");
 		$scope.state = $scope.States.MENU;
 	}
 	$scope.stateChanged = function() {
@@ -84,7 +85,7 @@ function GameCntl($scope, $timeout) {
 	}
 
 	// Fear/Terror related counters
-	$scope.fearsLeft = -2;//4+rand(0,3);
+	$scope.fearsLeft = -2;//=4+rand(0,3);
 	$scope.terror = null;
 	$scope.overcameTerror = null;
 

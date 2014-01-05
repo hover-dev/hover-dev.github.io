@@ -41,7 +41,7 @@
 
 			<div class="modal-footer" ng-show="popup.type == 'fear' || popup.type == 'terrorIntro'">
 				<p ng-show="fearsLeft == 1">The shadows feel darker.</p>
-				<button type="button" class="btn btn-default" data-dismiss="modal">Okay...</button>
+				<button type="button" class="btn btn-default" ng-click="makePermanent(popup)" data-dismiss="modal">Okay...</button>
 			</div>
 
 			<div class="modal-footer" ng-show="popup.type == 'item'">
@@ -62,9 +62,9 @@
 
 			<div class="modal-footer" ng-show="popup.type == 'terror'">
 				<p class="risk small">{{attributesString}}</p>
-				<div class="risk" ng-show="popup.risk"><button type="button" ng-click="finalRisk('stamina')" class="btn btn-info">{{popup.staminaRisk[0]}}</button></div>
-				<div class="risk" ng-show="popup.risk"><button type="button" ng-click="finalRisk('speed')" class="btn btn-info">{{popup.speedRisk[0]}}</button></div>
-				<div class="risk" ng-show="popup.risk"><button type="button" ng-click="finalRisk('courage')" class="btn btn-info">{{popup.courageRisk[0]}}</button></div>
+				<div class="risk stamina" ng-show="popup.risk"><button type="button" ng-click="finalRisk('stamina')" class="btn btn-info">{{popup.staminaRisk[0]}}</button></div>
+				<div class="risk speed" ng-show="popup.risk"><button type="button" ng-click="finalRisk('speed')" class="btn btn-info">{{popup.speedRisk[0]}}</button></div>
+				<div class="risk courage" ng-show="popup.risk"><button type="button" ng-click="finalRisk('courage')" class="btn btn-info">{{popup.courageRisk[0]}}</button></div>
 				<div class="risk" ng-repeat="card in character.hand">
 					<button type="button" ng-show="card.optionalUse === true && card.uses > 0" ng-click="useItem(card)" class="btn btn-primary">{{card.useText}}</button>
 				</div>

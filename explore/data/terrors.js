@@ -21,16 +21,18 @@ FOREST_TERRORS = [
 				"I use what I have to sever the finger. My mind clears as the ring drops and I quickly wrap the clean cut.",
 				"The ring drops, stained thick with blood. I sit next to it as I clench my bleeding wound."
 			],
-			speedRisk: [
+			/*speedRisk: [
 				"Rip the ring off! (Speed)",
 				"I quickly get it off before it tightens more. My finger is black where the ring was but at least it's off.",
 				"The more I pull the tighter it feels. My finger is purple now and I stop trying."
-			],
+			],*/
 			courageRisk: [
 				"Defy the creeping voice. (Courage)",
 				"I yell loudly in defiance. I'm not afraid of the voice and it knows it. The forest goes silent and I remove the ring.",
 				"My shouts become more panicked, and each one causes the voice to grow louder. It is not impressed."
 			]
-		}
+		},
+		goodEnding: ["yay!"],
+		badEnding: ["boo!"]
 	}
 ]

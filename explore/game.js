@@ -27,11 +27,11 @@ function GameCntl($scope, $timeout) {
 
 	// The state the game is currently in
 	$scope.States = {
-		MENU: "menu.html",			// Pre-game
-		ARRIVE: "map.html",			// Finding the map
-		EXPLORE: "journey.html",	// The path there
-		LEAVE: "start.html",		// Kicking off your journey
-		EPILOGUE: "epilogue.html"	// Wrap up the journey
+		MENU: "menu.html",			// Main menu
+		INTRO: "intro.html",		// Pre-game intro
+		EXPLORE: "explore.html",	// The meat of the game
+		PAUSE: "pause.html",		// In-game menu (UNUSED)
+		OUTRO: "outro.html"			// Wrap up the journey, epilogue
 	};
 	$scope.state = $scope.States.EXPLORE;
 
@@ -45,6 +45,9 @@ function GameCntl($scope, $timeout) {
 	$scope.endGame = function() {
 		$scope.state = $scope.States.EPILOGUE;
 	};
+	$scope.restart = function() {
+		$scope.state = $scope.States.MENU;
+	}
 	$scope.stateChanged = function() {
 		if ($scope.state === $scope.States.EXPLORE) {
 			//$('#popup').modal("show");
@@ -116,6 +119,12 @@ function GameCntl($scope, $timeout) {
 		$('.risk').show();
 		$('.outcome').hide();
 		if (card.type != 'item' && card.risk && !card.risk.optional) $('.continue').hide();
+		if (card.type == 'terror') {
+			// Hide the option we don't use
+			if (card.staminaRisk === undefined) $('#popup .risk.stamina').hide();
+			if (card.speedRisk === undefined) $('#popup .risk.speed').hide();
+			if (card.courageRisk === undefined) $('#popup .risk.courage').hide();
+		}
 
 		// Show the modal
 		$scope.popup = card;
@@ -202,7 +211,6 @@ function GameCntl($scope, $timeout) {
 
 	// Apply any protection we might have to prevent damage
 	function applyProtection(attribute, damage) {
-		console.log("damage: "+damage);
 		if (damage <= 0) return null;
 		var array = []; // Return [remainingDamage, itemUseText, ...]
 		// Go through all the appropriate protection of all the items in our hand
@@ -215,7 +223,6 @@ function GameCntl($scope, $timeout) {
 				if (effect[0] == 'protect' && effect[1] == attribute) {
 					// Soak the damage
 					damage -= effect[2];
-					console.log("after absorbing: "+damage);
 					array.push($scope.character.hand[n].useText);
 
 					// Break the item unless it's a Fear
@@ -442,6 +449,8 @@ function GameCntl($scope, $timeout) {
 					$scope.addCard(draws[i]);
 				}
 				if (draws[i].type == 'terror') {
+					// Make sure all those bonuses are set up before we take the final Event
+					$scope.updateItemBonuses();
 					$('.continue').hide();
 				}
 				$scope.showCard(draws[i]);

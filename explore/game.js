@@ -199,7 +199,7 @@ function GameCntl($scope, $timeout) {
 		// Update the readable string
 		var character = $scope.character;
 		var string = "";
-		var attribute = ['stamina', 'courage', 'speed'];
+		var attribute = ['stamina', 'speed', 'courage'];
 		for (var i = 0; i < 3; i++) {
 			var bonus = character[attribute[i]].bonus;
 			string += attribute[i][0].toUpperCase() + attribute[i].slice(1) + ": ";

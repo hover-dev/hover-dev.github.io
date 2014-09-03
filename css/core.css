@@ -78,10 +78,10 @@ footer {
 	float: left;
 }
 
-.projects .city {
+.projects .more {
 	background-image:url('../img/platformer.png');
 }
-.projects .search {
+.projects .mvml {
 	background-image:url('../img/search.png');
 }
 .projects .icarus {

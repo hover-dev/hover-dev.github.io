@@ -78,10 +78,10 @@ footer {
 	float: left;
 }
 
-.projects .city {
+.projects .projects {
 	background-image:url('../img/platformer.png');
 }
-.projects .search {
+.projects .mvml {
 	background-image:url('../img/search.png');
 }
 .projects .icarus {
@@ -96,16 +96,11 @@ footer {
 	float: left;
 }
 
-.projects a.more {
-	margin: 1em 0 0 0;
-	height: 100%;
-}
-
 .projects a h2 {
 	position: absolute; 
 	top: 50px; 
 	left: 0; 
-	width: 250px; 
+	width: 400px; 
 }
 
 .projects a h2 span {

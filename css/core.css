@@ -91,15 +91,18 @@ footer {
 	background-image:url('../img/mvml_banner.png');
 	background-repeat:no-repeat;
 	background-size:cover;
+	background-position: right center;
 }
 .projects .icarus {
 	background-image:url('../img/icarus.png');
+	background-position: right center;
 }
 .projects .sweatshop {
 	background-image:url('../img/icarus.png');
 }
 .projects .cardboard {
 	background-image:url('../img/cardboard_banner.png');
+	background-position: center;
 }
 .projects .more {
   height: 40px;

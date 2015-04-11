@@ -78,9 +78,15 @@ footer {
 	float: left;
 }
 
-.projects .projects {
-	background-image:url('../img/platformer.png');
+.shadowed {
+	-webkit-box-shadow: 0px 6px 19px 0px rgba(128,128,128,1);
+	-moz-box-shadow: 0px 6px 19px 0px rgba(128,128,128,1);
+	box-shadow: 0px 6px 19px 0px rgba(128,128,128,1);
 }
+
+/*.projects .projects {
+	background-image:url('../img/platformer.png');
+}*/
 .projects .mvml {
 	background-image:url('../img/mvml_banner.png');
 	background-repeat:no-repeat;
@@ -89,11 +95,24 @@ footer {
 .projects .icarus {
 	background-image:url('../img/icarus.png');
 }
+.projects .sweatshop {
+	background-image:url('../img/icarus.png');
+}
+.projects .cardboard {
+	background-image:url('../img/cardboard_banner.png');
+}
+.projects .more {
+  height: 40px;
+  color: #08c;
+}
+.projects .more:hover {
+  color: #005580;
+}
 
-.projects a {
+.projects a.box {
 	position: relative;
 	height: 120px;
-	width: 750px;
+	width: 100%;
 	display: block;
 	float: left;
 }
@@ -120,7 +139,7 @@ address {
 	height: 100%;
 }
 
-address div {
+address div, .more {
 	font-size: 1.5em;
 	font-style: none;
 	float: left;

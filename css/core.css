@@ -84,21 +84,12 @@ footer {
 	box-shadow: 0px 6px 19px 0px rgba(128,128,128,1);
 }
 
-/*.projects .projects {
-	background-image:url('../img/platformer.png');
-}*/
-.projects .mvml {
-	background-image:url('../img/mvml_banner.png');
-	background-repeat:no-repeat;
-	background-size:cover;
-	background-position: right center;
+.projects .vivegrip {
+	background-image:url('../img/vivegrip_banner.png');
 }
 .projects .icarus {
 	background-image:url('../img/icarus.png');
 	background-position: right center;
-}
-.projects .sweatshop {
-	background-image:url('../img/icarus.png');
 }
 .projects .cardboard {
 	background-image:url('../img/cardboard_banner.png');

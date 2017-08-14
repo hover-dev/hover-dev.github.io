@@ -87,6 +87,12 @@ footer {
 .projects .vivegrip {
 	background-image:url('../img/vivegrip_banner.png');
 }
+.projects .mvml {		
+	background-image:url('../img/mvml_banner.png');		
+	background-repeat:no-repeat;		
+	background-size:cover;		
+	background-position: right center;
+}
 .projects .icarus {
 	background-image:url('../img/icarus.png');
 	background-position: right center;

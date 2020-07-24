@@ -2,14 +2,13 @@
 <product>
   <title>Stacksquatch</title>
   <release-dates>
-    <release-date>Aug, 2020 (early access)</release-date>
-    <release-date>Q1, 2021 (full release)</release-date>
+    <release-date>August 2020 (early access)</release-date>
+    <release-date>Q1 2021 (full release)</release-date>
   </release-dates>
-  <!-- <release-date>Aug, 2020</release-date> -->
   <website>https://stacksquatch.com</website>
 
   <!-- Link to request press copy: -->
-  <press-copy-request>mailto:stacksquatchin@gmail.com</press-copy-request>
+  <press-copy-request>mailto:stacksquatchin@gmail.com?subject=Press%20copy%20request</press-copy-request>
 
   <platforms>
     <platform>
@@ -42,7 +41,7 @@
     </history>
     <history>
       <header>Realization</header>
-      <text>I wanted to work with others to bring it all together. Karen's 3D art had the cozy feel I was looking for and laid the foundation for the art style. Capt beard had an evocative sound in "Avant Stupid" and would form the OST. Courtney's colourful and mysterious art portfolio perfectly lent itself to illustrating the cryptids. Last, Olivia's playful style complimented the cryptids to assist with the game's logo. This was my first time working with a team of freelancers this size but they made it easy and were a pleasure to work with.
+      <text>I wanted to work with others to bring it all together. I picked each member of the team for commission work because of their unique, cozy, and sometimes quirky style of art that I felt represented the soul of Stacksquatch. This was my first time working with a team of freelancers this size but they made it easy and were a pleasure to work with.
       </text>
     </history>
   </histories>

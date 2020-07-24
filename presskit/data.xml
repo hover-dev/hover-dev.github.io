@@ -30,18 +30,18 @@
     </social>
   </socials>
 
-  <description>I keep making games and nobody can stop me! I also make tools that help you make games too.</description>
+  <description>I keep making games and nobody can stop me! I also make tools that help you make games.</description>
 
   <!-- Choose between a single block: -->
   <history>I got a BSc in Computing Science because I liked coding and making games. Then I realized that the games industry wasn't ready for me so I struck out on my own.</history>
 
-  <additionals>
+  <!--<additionals>
     <additional>
       <title></title>
       <description></description>
       <link></link>
     </additional>
-  </additionals>
+  </additionals>-->
 
   <credits>
     <credit>

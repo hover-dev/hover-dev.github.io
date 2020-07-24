@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<company>
+  <title>JScott</title>
+  <based-in>Canada</based-in>
+  <founding-date>the 90's</founding-date>
+  <website>https://jscott.itch.io</website>
+  <press-contact>
+    jvscott@gmail.com
+  </press-contact>
+
+  <!-- Google analytics ID: -->
+  <analytics>UA-40323936-8</analytics>
+
+  <phone>makes me nervous</phone>
+  <address>
+    <line>
+      Vancouver region
+    </line>
+    <line>
+      BC, Canada
+    </line>
+  </address>
+
+  <socials>
+    <social>
+      <name>Twitter</name>
+      <link>
+        https://twitter.com/AKindlyOrc
+      </link>
+    </social>
+  </socials>
+
+  <description>I keep making games and nobody can stop me! I also make tools that help you make games too.</description>
+
+  <!-- Choose between a single block: -->
+  <history>I got a BSc in Computing Science because I liked coding and making games. Then I realized that the games industry wasn't ready for me so I struck out on my own.</history>
+
+  <additionals>
+    <additional>
+      <title></title>
+      <description></description>
+      <link></link>
+    </additional>
+  </additionals>
+
+  <credits>
+    <credit>
+      <person>JScott</person>
+      <role></role>
+      <website>https://jscott.itch.io</website>
+    </credit>
+  </credits>
+
+  <contacts>
+    <contact>
+      <name>JScott</name>
+      <mail>jvscott@gmail.com</mail>
+    </contact>
+  </contacts>
+</company>

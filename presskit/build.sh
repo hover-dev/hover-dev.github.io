@@ -1,3 +1,12 @@
 #!/bin/bash
+
+echo "Update"
 npm update -g presskit
-presskit build
+
+echo "Build"
+BASEDIR=$(dirname $0)
+cd "${BASEDIR}" && presskit build
+
+echo "Move"
+cp -vr "${BASEDIR}/build"/* "${BASEDIR}/.."
+rm -vrf "${BASEDIR}/build"/*

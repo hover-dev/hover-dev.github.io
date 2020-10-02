@@ -11,12 +11,12 @@
   <!-- Google analytics ID: -->
   <analytics>UA-40323936-8</analytics>
 
-  <phone>makes me nervous</phone>
+<!--  <phone>makes me nervous</phone>
   <address>
     <line>
       The Internet
     </line>
-  </address>
+  </address>-->
 
   <socials>
     <social>
@@ -30,7 +30,7 @@
   <description>I keep making games and nobody can stop me! I also make tools that help you make games.</description>
 
   <!-- Choose between a single block: -->
-  <history>I got a BSc in Computing Science because I liked coding and making games. Then I realized that the games industry wasn't ready for me so I struck out on my own.</history>
+  <history>I earned a CS degree because I liked coding and making games. Then I realized that the games industry wasn't ready for me so I struck out on my own.</history>
 
   <!--<additionals>
     <additional>

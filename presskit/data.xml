@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <company>
-  <title>JScott</title>
+  <title>Hover</title>
   <based-in>Canada</based-in>
   <founding-date>the 90's</founding-date>
-  <website>https://jscott.itch.io</website>
+  <website>https://warmglow.itch.io</website>
   <press-contact>
-    jvscott@gmail.com
+    goonmygoon@gmail.com
   </press-contact>
 
   <!-- Google analytics ID: -->
@@ -14,10 +14,7 @@
   <phone>makes me nervous</phone>
   <address>
     <line>
-      Vancouver region
-    </line>
-    <line>
-      BC, Canada
+      The Internet
     </line>
   </address>
 
@@ -45,16 +42,16 @@
 
   <credits>
     <credit>
-      <person>JScott</person>
+      <person>Hover</person>
       <role></role>
-      <website>https://jscott.itch.io</website>
+      <website>https://warmglow.itch.io</website>
     </credit>
   </credits>
 
   <contacts>
     <contact>
-      <name>JScott</name>
-      <mail>jvscott@gmail.com</mail>
+      <name>Hover</name>
+      <mail>goonmygoon@gmail.com</mail>
     </contact>
   </contacts>
 </company>

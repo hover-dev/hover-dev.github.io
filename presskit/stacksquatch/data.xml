@@ -17,7 +17,7 @@
     </platform>
     <platform>
       <name>Itch.io</name>
-      <link>https://jscott.itch.io/stacksquatch</link>
+      <link>https://warmglow.itch.io/stacksquatch</link>
     </platform>
   </platforms>
 
@@ -112,9 +112,9 @@
 
   <credits>
     <credit>
-      <person>JScott</person>
+      <person>Hover</person>
       <role>gamedev</role>
-      <website>https://jscott.itch.io</website>
+      <website>https://warmglow.itch.io</website>
     </credit>
     <credit>
       <person>capt beard</person>
@@ -140,10 +140,10 @@
 
   <contacts>
     <contact>
-      <name>JScott</name>
+      <name>Hover</name>
 
       <!-- Pick one: -->
-      <mail>jvscott@gmail.com</mail>
+      <mail>goonmygoon@gmail.com</mail>
       <link></link>
     </contact>
   </contacts>
